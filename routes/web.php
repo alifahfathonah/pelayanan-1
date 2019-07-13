@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
  ////////// Admin \\\\\\\\\\\
  
  Route::resource('produk','produkController');
+ Route::resource('ticket','ticketController');
+ Route::resource('customer','customerController');

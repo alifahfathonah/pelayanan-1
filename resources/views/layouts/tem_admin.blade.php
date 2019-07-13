@@ -132,7 +132,7 @@
               <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown" style="color:black"><i class="fas fa-user-secret"></i> <span>Pengaduan</span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="" style="color:black">Pengaduan</a></li>
+                  <li><a href="{{route('ticket.index')}}" style="color:black">Pengaduan</a></li>
                 </ul>
               </li>
 

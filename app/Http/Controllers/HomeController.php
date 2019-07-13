@@ -27,6 +27,8 @@ class HomeController extends Controller
         if (Auth::check()) {
             if (Auth::user()->auth == "Admin") {
                 return view('Admin.home');
+            } elseif(Auth::user()->auth ="Customer") {
+               return view('Customer.home');
             } else {
                 return redirect('home');
             }
