@@ -36,8 +36,6 @@
            
               <a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
            
-              <a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle"><i class="far fa-envelope"></i></a>
-           
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
               <div class="dropdown-header">Ticket Masuk
                 <div class="float-right">
@@ -51,7 +49,6 @@
                       <img alt="image" src="{{asset('assets/img/avatar/avatar-5.png')}}" class="rounded-circle">
                     </div>
                     <div class="dropdown-item-desc">
-                     
                       <div class="time">Yesterday</div>
                     </div>
                   </a>
@@ -115,25 +112,30 @@
       <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="{{route('home')}}" class="text-black">Billing</a>
+            <a href="{{route('home')}}" class="text-black">Layanan</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{route('home')}}" class="text-black">Billing</a>
+            <a href="{{route('home')}}" class="text-black">Layanan</a>
           </div>
           <ul class="sidebar-menu">
               <li class="menu-header" style="color:black">Dashboard</li>
               <li><a class="nav-link" href="{{url('home')}}" style="color:black"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
               
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown" style="color:black"><i class="fas fa-user-secret"></i> <span>Provider</span></a>
+                <a href="#" class="nav-link has-dropdown" style="color:black"><i class="fas fa-user-secret"></i> <span>Produk</span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="" style="color:black">Tambah Provider</a></li>
-                  <li><a href="" style="color:black">Manage Provider</a></li>
+                  <li><a href="{{route('produk.index')}}" style="color:black">Manage Produk</a></li>
+                  <li><a href="{{route('produk.create')}}" style="color:black">Tambah Produk</a></li>
                 </ul>
               </li>
 
-              
-             
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown" style="color:black"><i class="fas fa-user-secret"></i> <span>Pengaduan</span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="" style="color:black">Pengaduan</a></li>
+                </ul>
+              </li>
+
             </ul>
         </aside>
       </div>
