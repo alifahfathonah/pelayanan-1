@@ -7,6 +7,13 @@
     {{-- Script --}}
     <link rel="stylesheet" type="text/css" href="{{asset('vendor/boostrap/bootstrap.css')}}">
     <title>Selamat Datang</title>
+    <style type="text/css">
+        .card {
+            margin: 0 auto; /* Added */
+            float: left; /* Added */
+            margin-bottom: 10px; /* Added */
+        }
+    </style>
 </head>
 <body>
 
@@ -25,41 +32,26 @@
     </nav>
 
     <div class="container-fluid">
-        <div class="container-fluid bg-white text-dark shadow-lg rounded scrollspy-example" data-spy="scroll" data-targer="#navbarNavAltMarkup" data-offset="0" style="margin-top:70px">
+        <div class="container-fluid bg-white text-dark shadow-lg rounded scrollspy-example" data-spy="scroll" data-offset="0" style="margin-top:70px">
             <div class="row"  style="height: 80px">  
             </div>
         </div>
     </div>
     <br>
-    <div class="container-fluid">
         <div class="container-fluid">
-            <div class="row scrollspy-example" data-spy="scroll" data-targer="#navbarNavAltMarkup" data-offset="0">
+            <div class="row text-left" data-spy="scroll" data-offset="0">
                 <div class="col-12 col-md-9 col-lg-9">
                     <div class="card-deck" id="about">
-                        <div class="card shadow-lg">
-                            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/06/22/12/53/galaxy-4291517_960_720.jpg" alt="Card image cap">
-                            <div class="card-body">
-                            <h5 class="card-title">About</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        @foreach ($produk as $item)                           
+                            <div class="card shadow-lg">
+                                <img class="card-img-top" src="{{asset('data_file/'.$item->img)}}" width="300" height="300" alt="Card image cap">
+                                <div class="card-body">
+                                <h5 class="card-title">{{$item->nama}}</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card shadow-lg">
-                            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/06/22/12/53/galaxy-4291517_960_720.jpg" alt="Card image cap">
-                            <div class="card-body">
-                            <h5 class="card-title">About</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                        <div class="card shadow-lg">
-                            <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/06/22/12/53/galaxy-4291517_960_720.jpg" alt="Card image cap">
-                            <div class="card-body">
-                            <h5 class="card-title">About</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -145,7 +137,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
     {{-- <script src="{{asset('vendor/boostrap/bootstrap.js')}}"></script>
     <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
