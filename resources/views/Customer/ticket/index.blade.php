@@ -28,7 +28,7 @@
                                     <th>PENGIRIM</th>
                                     <th>PESAN</th>
                                     <th>STATUS</th>
-                                    <th>ACTION</th>
+                                    {{-- <th>ACTION</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,6 +42,9 @@
                                         <td width="400">{{$item->id_user}}</td>
                                         <td width="400">{{$item->pesan}}</td>
                                         <td width="140"><span class="badge badge-secondary">{{$item->status}}</span></td>
+                                        {{-- <td>
+                                                <button class="btn btn-success btn-sm">Lihat</button>
+                                            </td> --}}
                                     </tr>
                                     <?php $no++; ?>
                                     @endforeach

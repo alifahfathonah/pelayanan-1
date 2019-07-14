@@ -17,7 +17,10 @@ class ticketController extends Controller
     public function index()
     {
         if (Auth::user()->auth =="Admin") {
-            $ticket = ticket::All();
+            $ticket = ticket::selectRaw('tickets.id,tickets.no_produk,tickets.nama_produk,tickets.ticket,tickets.id_user,tickets.status,tickets.pesan,a.nama as nama_produk,b.name as id_user')
+            ->leftJoin('produks as a' , 'a.id' , '=' ,'tickets.id')
+            ->leftJoin('users as b' , 'b.id' , '=' ,'tickets.id_user')
+            ->get();
             return view('Admin.ticket.index', compact('ticket'));
         }
     }
@@ -39,7 +42,7 @@ class ticketController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         //
     }
 
