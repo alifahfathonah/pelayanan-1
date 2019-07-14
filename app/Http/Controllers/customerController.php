@@ -16,7 +16,8 @@ class customerController extends Controller
     public function index()
     {
         if (Auth::user()->auth == "Customer") {
-            return view('Customer.home');
+            $ticket = ticket::all();
+            return view('Customer.ticket.index', compact('ticket'));
         }
     }
 
@@ -27,7 +28,9 @@ class customerController extends Controller
      */
     public function create()
     {
-        //
+        if (Auth::user()->auth == "Customer") {
+            return view('Customer.ticket.create');
+        }
     }
 
     /**

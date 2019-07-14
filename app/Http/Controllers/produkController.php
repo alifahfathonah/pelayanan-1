@@ -59,7 +59,7 @@ class produkController extends Controller
     
             $nama_file = time()."_".$file->getClientOriginalName();
     
-                      // isi dengan nama folder tempat kemana file diupload
+            // isi dengan nama folder tempat kemana file diupload
             $tujuan_upload = 'data_file';
             $file->move($tujuan_upload,$nama_file);
     

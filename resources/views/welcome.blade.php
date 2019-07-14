@@ -76,7 +76,8 @@
                             </ul>
                             <div class="tab-content" id="pills-tab">
                                 <div class="tab-pane fade show active" id="login" role="tablist" aria-labelledby="login-tab">
-                                    <form class="form-signin" action="">
+                                    <form class="form-signin" action="{{route('login')}}" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <label>E-mail</label>
                                             <input type="email" class="form-control" name="email" placeholder="Masukan E-mail">
@@ -91,7 +92,8 @@
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="register" role="tablist" aria-labelledby="register-tab">
-                                    <form class="form-signin" action="">
+                                    <form class="form-signin" action="{{route('register')}}" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <label>Nama</label>
                                             <input type="text" class="form-control" name="name" placeholder="Masukan Nama">
@@ -101,11 +103,38 @@
                                             <label>E-mail</label>
                                             <input type="email" class="form-control" name="email" placeholder="Masukan E-mail">
                                         </div>
+                                        
+                                        <div class="form-group">
+                                            <label>No. Hp</label>
+                                            <input type="number" name="hp" class="form-control">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Alamat</label>
+                                            <input type="text" name="alamat" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Kelamin</label>
+                                            <select name="kelamin" class="form-control">
+                                                <option value="">Pilih Kelamin</option>
+                                                <option value="L">Laki-laki</option>
+                                                <option value="P">Perempuan</option>
+                                            </select>
+                                        </div>
+
+                                        <input type="hidden" name="auth" value="Customer">
 
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input type="password" class="form-control" name="password" placeholder="Masukan Password">
                                         </div>
+
+                                        <div class="form-group">
+                                            <label>Konfirmasi Password</label>
+                                            <input type="password" name="password_confirmation" class="form-control" placeholder="Masukan Ulang Password">
+                                        </div>
+
                                         <button type="submit" class="btn btn-primary btn-block">REGISTER</button>
                                         <button type="reset" class="btn btn-warning btn-block">RESET</button>
                                     </form>
