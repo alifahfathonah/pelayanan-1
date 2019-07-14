@@ -16,7 +16,7 @@
             <h4>Form Buat Ticket</h4>
             </div>
             <div class="card-body">
-                <form action="{{route('customer.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('ticket.store')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label>Nomor Produk</label>
@@ -39,6 +39,7 @@
                     <input type="hidden" name="id_user">
 
                     <input type="hidden" name="status">
+                    <input type="hidden" name="ticket">
 
                     <div class="form-group">
                         <label>Pesan</label>
