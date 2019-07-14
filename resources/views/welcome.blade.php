@@ -7,13 +7,6 @@
     {{-- Script --}}
     <link rel="stylesheet" type="text/css" href="{{asset('vendor/boostrap/bootstrap.css')}}">
     <title>Selamat Datang</title>
-    <style type="text/css">
-        .card {
-            margin: 0 auto; /* Added */
-            float: left; /* Added */
-            margin-bottom: 10px; /* Added */
-        }
-    </style>
 </head>
 <body>
 
@@ -41,7 +34,7 @@
         <div class="container-fluid">
             <div class="row text-left" data-spy="scroll" data-offset="0">
                 <div class="col-12 col-md-9 col-lg-9">
-                    <div class="card-deck" id="about">
+                    {{-- <div class="card-deck" id="about">
                         @foreach ($produk as $item)                           
                             <div class="card shadow-lg">
                                 <img class="card-img-top" src="{{asset('data_file/'.$item->img)}}" width="300" height="300" alt="Card image cap">
@@ -52,7 +45,23 @@
                                 </div>
                             </div>
                         @endforeach
-                    </div>
+                    </div> --}}
+                    <div class="row">
+                            @foreach ($produk as $item)
+                            <div class="col-auto mb-3">
+                                <div class="card shadow-lg" style="width:22.8rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{$item->nama}}</h5>
+                                        <img class="card-img-top" src="{{asset('data_file/'.$item->img)}}" width="200" height="200" alt="Card image cap">
+                                        {{-- <h6 class="card-subtitle mb-2 text-muted">{{$item->kategori}}</h6> --}}
+                                        <div class="card-footer">
+                                            <small class="text-muted">{{$item->kategori}}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                 </div>
 
                 <div class="col-12 col-md-3 col-lg-3">
