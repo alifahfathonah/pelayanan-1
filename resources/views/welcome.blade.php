@@ -96,43 +96,78 @@
                                         @csrf
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input type="text" class="form-control" name="name" placeholder="Masukan Nama">
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Masukan Nama">
+                                             @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                             @enderror
                                         </div>
 
                                         <div class="form-group">
                                             <label>E-mail</label>
-                                            <input type="email" class="form-control" name="email" placeholder="Masukan E-mail">
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Masukan E-mail">
+                                             @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                             @enderror
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>No. Hp</label>
-                                            <input type="number" name="hp" class="form-control">
+                                            <input type="number" name="hp" class="form-control @error('hp') is-invalid @enderror">
+                                            @error('hp')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                             @enderror
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <input type="text" name="alamat" class="form-control">
+                                            <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror">
+                                            @error('alamat')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                             @enderror
                                         </div>
 
                                         <div class="form-group">
                                             <label>Kelamin</label>
-                                            <select name="kelamin" class="form-control">
+                                            <select name="kelamin" class="form-control @error('kelamin') is-invalid @enderror">
                                                 <option value="">Pilih Kelamin</option>
                                                 <option value="L">Laki-laki</option>
                                                 <option value="P">Perempuan</option>
                                             </select>
+                                            @error('kelamin')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                             @enderror
                                         </div>
 
                                         <input type="hidden" name="auth" value="Customer">
 
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" class="form-control" name="password" placeholder="Masukan Password">
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Masukan Password">
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                             @enderror
                                         </div>
 
                                         <div class="form-group">
                                             <label>Konfirmasi Password</label>
-                                            <input type="password" name="password_confirmation" class="form-control" placeholder="Masukan Ulang Password">
+                                            <input type="password" name="password_confirmation" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Ulang Password">
+                                            @error('password_confirmation')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                             @enderror
                                         </div>
 
                                         <button type="submit" class="btn btn-primary btn-block">REGISTER</button>

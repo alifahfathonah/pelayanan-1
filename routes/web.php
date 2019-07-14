@@ -10,12 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//verifikasi email
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
+
+//verifikasi email user
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
