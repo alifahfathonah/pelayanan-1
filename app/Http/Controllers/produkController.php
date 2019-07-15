@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\produk;
+use App\Kategori;
 use Auth;
+use DB;
+use Session;
 
 class produkController extends Controller
 {
@@ -16,7 +19,10 @@ class produkController extends Controller
     public function index()
     {
         if (Auth::user()->auth == "Admin") {
-            $produk = produk::all();
+            $produk =   DB::table('produks as p')
+                        -> leftJoin('kategoris as k', 'p.kategori', '=', 'k.id_kategori')
+                        -> select('p.*', 'k.nama_kategori')
+                        ->get();
             return view('Admin.produk.index',compact('produk'));
         } else {
             return redirect('home');
@@ -31,7 +37,8 @@ class produkController extends Controller
     public function create()
     {
         if (Auth::user()->auth == "Admin") {
-            return view('Admin.produk.create');
+            $kategori_list = Kategori::all();
+            return view('Admin.produk.create',compact('kategori_list'));
         } else {
             return redirect('home');
         }
@@ -71,7 +78,13 @@ class produkController extends Controller
                 'img' => $nama_file,
             ]);
     
-            return redirect()->back();
+            Session::flash("flash_notification", [
+            "level"=>"success",
+            "message"=>"Berhasil Manambahkan Produk"
+            ]);
+    
+            return redirect()->route('produk.index');
+
         } else {
             return redirect('home');
         }
@@ -97,6 +110,19 @@ class produkController extends Controller
     public function edit($id)
     {
         //
+         if (Auth::user()->auth == "Admin") {
+            $produk = DB::table('produks as p')
+                        -> leftJoin('kategoris as k', 'p.kategori', '=', 'k.id_kategori')
+                        -> select('p.*', 'k.nama_kategori')
+                        -> where('p.id',$id)
+                        -> first();
+
+            $kategori_list = Kategori::all();
+
+            return view('Admin.produk.edit')->with(compact('produk','kategori_list'));
+        }else{
+           return redirect('home');
+        }  
     }
 
     /**
@@ -109,6 +135,52 @@ class produkController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if (Auth::user()->auth == "Admin") {
+            $this->validate($request, [
+                'nama' => 'required',
+                'nama_kategori' => 'required',
+                'quantity' => 'required',
+                'harga' => 'required',
+            ]);
+
+            // menyimpan data file yang diupload ke variabel $file
+            $file = $request->file('img');
+    
+            $nama_file = time()."_".$file->getClientOriginalName();
+    
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'data_file';
+            $file->move($tujuan_upload,$nama_file);
+
+            if ($request->file('img') != "") {
+                 produk::where('id',$id)->
+                 update([
+                    'nama' => $request->nama,
+                    'kategori' => $request->kategori,
+                    'quantity' => $request->quantity,
+                    'harga' => $request->harga,
+                    'img' => $nama_file,
+                ]);
+            }else{
+                produk::where('id',$id)->
+                 update([
+                    'nama' => $request->nama,
+                    'kategori' => $request->kategori,
+                    'quantity' => $request->quantity,
+                    'harga' => $request->harga
+                ]);
+            }
+           
+
+            Session::flash("flash_notification", [
+            "level"=>"success",
+            "message"=>"Berhasil Mengubah Produk"
+            ]);
+    
+            return redirect()->route('produk.index');
+        } else {
+            return redirect('home');
+        }
     }
 
     /**
@@ -121,4 +193,15 @@ class produkController extends Controller
     {
         //
     }
+
+     public function delete($id)
+    {
+     produk::where('id', $id)->delete();
+
+        Session::flash("flash_notification", [
+            "level"=>"danger",
+            "message"=>"Berhasil Mengapus Produk"
+            ]);
+       return redirect()->route('produk.index');
+   }
 }

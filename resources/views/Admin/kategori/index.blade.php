@@ -1,11 +1,11 @@
 @extends('layouts.tem_admin')
-@section('title','Data Produk')
+@section('title','Data Kategori Produk')
 @section('content')
 <div class="section-header">
-    <h1>Produk</h1>
+    <h1>Kategori Produk</h1>
     <div class="section-header-breadcrumb">
         <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-        <div class="breadcrumb-item">Produk</div>
+        <div class="breadcrumb-item">Kategori Produk</div>
     </div>
 </div>
     
@@ -13,8 +13,8 @@
         <div class="col-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Data Produk</h4>
-                    <a href="{{route('produk.create')}}" class="btn btn-primary btn-sm">Tambah Produk</a>
+                    <h4>Data Kategori Produk</h4>
+                    <a href="{{route('kategori.create')}}" class="btn btn-primary btn-sm">Tambah Kategori Produk</a>
                     </div>
                      @include('layouts._flash')
                     <div class="card-body">
@@ -23,26 +23,20 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>NAMA PRODUK</th>
                                     <th>NAMA KATEGORI</th>
-                                    <th>QUANTITY</th>
-                                    <th>HARGA</th>
-                                    <th>GAMBAR</th>
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no=1; ?>
-                                @foreach ($produk as $item)
+                                @foreach ($kategori as $item)
                                     <tr>
-                                        <td>{{$no}}</td>
-                                        <td>{{$item->nama}}</td>
-                                        <td>{{$item->nama_kategori}}</td>
-                                        <td>{{$item->quantity}}</td>
-                                        <td>{{$item->harga}}</td>
-                                        <td><img src="{{asset('data_file/')}}/{{$item->img}}" style="height:60px;width:60px;"></td>
+                                        <td width="10">{{$no}}</td>
+                                        <td width="400">{{$item->nama_kategori}}</td>
                                         <td>
-                                           <a href="{{ route('produk.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="nav-icon fa fa-wrench"></i></a> || <a href="{{ route('produk.delete',$item->id)}}" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-trash"></i></a>
+                                           <a href="{{ route('kategori.edit', $item->id_kategori) }}" class="btn btn-warning btn-sm"><i class="nav-icon fa fa-wrench"></i></a> || 
+                    
+                                             <a href="{{ route('kategori.delete',$item->id_kategori)}}" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-trash"></i></a>
 
                                         </td> 
                                     </tr>
