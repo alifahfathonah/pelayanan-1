@@ -25,47 +25,35 @@
     </nav>
 
     <div class="container-fluid">
-        <div class="container-fluid bg-white text-dark shadow-lg rounded scrollspy-example" data-spy="scroll" data-offset="0" style="margin-top:70px">
+        <div class="bg-white text-dark shadow-lg rounded scrollspy-example" data-spy="scroll" data-offset="0" style="margin-top:70px">
             <div class="row"  style="height: 80px">  
             </div>
         </div>
     </div>
     <br>
-        <div class="container-fluid">
+        <div class="container-fluid scrollspy-example" data-spy="scroll" data-offset="0">
             <div class="row text-left" data-spy="scroll" data-offset="0">
                 <div class="col-12 col-md-9 col-lg-9">
-                    {{-- <div class="card-deck" id="about">
-                        @foreach ($produk as $item)                           
-                            <div class="card shadow-lg">
-                                <img class="card-img-top" src="{{asset('data_file/'.$item->img)}}" width="300" height="300" alt="Card image cap">
-                                <div class="card-body">
-                                <h5 class="card-title">{{$item->nama}}</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div> --}}
                     <div class="row">
-                            @foreach ($produk as $item)
-                            <div class="col-auto mb-3">
-                                <div class="card shadow-lg" style="width:22.8rem;">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{$item->nama}}</h5>
-                                        <img class="card-img-top" src="{{asset('data_file/'.$item->img)}}" width="200" height="200" alt="Card image cap">
-                                        {{-- <h6 class="card-subtitle mb-2 text-muted">{{$item->kategori}}</h6> --}}
-                                        <div class="card-footer">
-                                            <small class="text-muted">{{$item->kategori}}</small>
-                                        </div>
+                        @foreach ($produk as $item)
+                        <div class="col-auto mb-3">
+                            <div class="card shadow-lg" style="width:22.8rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$item->nama}}</h5>
+                                    <img class="card-img-top" src="{{asset('data_file/'.$item->img)}}" width="200" height="200" alt="Card image cap">
+                                    {{-- <h6 class="card-subtitle mb-2 text-muted">{{$item->kategori}}</h6> --}}
+                                    <div class="card-footer">
+                                        <small class="text-muted">{{$item->kategori}}</small>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
                         </div>
+                        @endforeach
+                    </div>
                 </div>
 
                 <div class="col-12 col-md-3 col-lg-3">
-                    <div class="card-deck shadow">
+                    <div class="card shadow-lg">
                         <div class="card-body">
                             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                 <li class="nav-item col text-center">
@@ -81,12 +69,12 @@
                                         @csrf
                                         <div class="form-group">
                                             <label>E-mail</label>
-                                            <input type="email" class="form-control" name="email" placeholder="Masukan E-mail">
+                                            <input type="email" class="form-control" name="email" placeholder="Masukan E-mail" required>
                                         </div>
         
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" class="form-control" name="password" placeholder="Masukan Password">
+                                            <input type="password" class="form-control" name="password" placeholder="Masukan Password" required>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-block">MASUK</button>
                                         <button type="reset" class="btn btn-warning btn-block">RESET</button>
@@ -97,7 +85,7 @@
                                         @csrf
                                         <div class="form-group">
                                             <label>Nama</label>
-                                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Masukan Nama">
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Masukan Nama" required>
                                              @error('name')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -107,7 +95,7 @@
 
                                         <div class="form-group">
                                             <label>E-mail</label>
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Masukan E-mail">
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Masukan E-mail" required>
                                              @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -117,7 +105,7 @@
                                         
                                         <div class="form-group">
                                             <label>No. Hp</label>
-                                            <input type="number" name="hp" class="form-control @error('hp') is-invalid @enderror">
+                                            <input type="number" name="hp" class="form-control @error('hp') is-invalid @enderror" placeholder="Masukan Nomor HP" required>
                                             @error('hp')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -127,7 +115,7 @@
                                         
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror">
+                                            <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" placeholder="Masukan Alamat" required>
                                             @error('alamat')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -137,7 +125,7 @@
 
                                         <div class="form-group">
                                             <label>Kelamin</label>
-                                            <select name="kelamin" class="form-control @error('kelamin') is-invalid @enderror">
+                                            <select name="kelamin" class="form-control @error('kelamin') is-invalid @enderror" required>
                                                 <option value="">Pilih Kelamin</option>
                                                 <option value="L">Laki-laki</option>
                                                 <option value="P">Perempuan</option>
@@ -153,7 +141,7 @@
 
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Masukan Password">
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Masukan Password" required>
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -163,7 +151,7 @@
 
                                         <div class="form-group">
                                             <label>Konfirmasi Password</label>
-                                            <input type="password" name="password_confirmation" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Ulang Password">
+                                            <input type="password" name="password_confirmation" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Ulang Password" required>
                                             @error('password_confirmation')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
