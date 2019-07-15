@@ -19,40 +19,150 @@
   <link rel="stylesheet" href="{{asset('assets/datatables/jquery.dataTables.min.css')}}">
 </head>
 
-<body>
+<body class="layout-3">
   <div id="app">
-    <div class="main-wrapper">
+    <div class="main-wrapper container">
       <div class="navbar-bg"></div>
-      <nav class="navbar navbar-expand-lg main-navbar">
-          <form class="form-inline mr-auto">
-              <ul class="navbar-nav mr-3">
-                <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-              </ul>
-             
-              <span style="color:white; font-size:25px; font-weight:bold"></span>
-          </form>
+     <nav class="navbar navbar-expand-lg main-navbar">
+        <a href="index.html" class="navbar-brand sidebar-gone-hide">Stisla</a>
+        <div class="navbar-nav">
+          <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
+        </div>
+        <div class="nav-collapse">
+          <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
+            <i class="fas fa-ellipsis-v"></i>
+          </a>
+         
+        </div>
+        <form class="form-inline ml-auto">
+          <ul class="navbar-nav">
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+          </ul>
+          <div class="search-element">
+            <div class="search-backdrop"></div>
+            <div class="search-result">
+              <div class="search-header">
+                Histories
+              </div>
+              <div class="search-item">
+                <a href="#">How to hack NASA using CSS</a>
+                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+              </div>
+              <div class="search-item">
+                <a href="#">Kodinger.com</a>
+                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+              </div>
+              <div class="search-item">
+                <a href="#">#Stisla</a>
+                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+              </div>
+              <div class="search-header">
+                Result
+              </div>
+              <div class="search-item">
+                <a href="#">
+                  <img class="mr-3 rounded" width="30" src="../assets/img/products/product-3-50.png" alt="product">
+                  oPhone S9 Limited Edition
+                </a>
+              </div>
+              <div class="search-item">
+                <a href="#">
+                  <img class="mr-3 rounded" width="30" src="../assets/img/products/product-2-50.png" alt="product">
+                  Drone X2 New Gen-7
+                </a>
+              </div>
+              <div class="search-item">
+                <a href="#">
+                  <img class="mr-3 rounded" width="30" src="../assets/img/products/product-1-50.png" alt="product">
+                  Headphone Blitz
+                </a>
+              </div>
+              <div class="search-header">
+                Projects
+              </div>
+              <div class="search-item">
+                <a href="#">
+                  <div class="search-icon bg-danger text-white mr-3">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  Stisla Admin Template
+                </a>
+              </div>
+              <div class="search-item">
+                <a href="#">
+                  <div class="search-icon bg-primary text-white mr-3">
+                    <i class="fas fa-laptop"></i>
+                  </div>
+                  Create a new Homepage Design
+                </a>
+              </div>
+            </div>
+          </div>
+        </form>
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown dropdown-list-toggle">
-           
-              <a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
-           
+          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
-              <div class="dropdown-header">Ticket Masuk
+              <div class="dropdown-header">Messages
                 <div class="float-right">
                   <a href="#">Mark All As Read</a>
                 </div>
               </div>
-        
               <div class="dropdown-list-content dropdown-list-message">
-                  <a href="" class="dropdown-item">
-                    <div class="dropdown-item-avatar">
-                      <img alt="image" src="{{asset('assets/img/avatar/avatar-5.png')}}" class="rounded-circle">
-                    </div>
-                    <div class="dropdown-item-desc">
-                      <div class="time">Yesterday</div>
-                    </div>
-                  </a>
-                
+                <a href="#" class="dropdown-item dropdown-item-unread">
+                  <div class="dropdown-item-avatar">
+                    <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle">
+                    <div class="is-online"></div>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>Kusnaedi</b>
+                    <p>Hello, Bro!</p>
+                    <div class="time">10 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item dropdown-item-unread">
+                  <div class="dropdown-item-avatar">
+                    <img alt="image" src="../assets/img/avatar/avatar-2.png" class="rounded-circle">
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>Dedik Sugiharto</b>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                    <div class="time">12 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item dropdown-item-unread">
+                  <div class="dropdown-item-avatar">
+                    <img alt="image" src="../assets/img/avatar/avatar-3.png" class="rounded-circle">
+                    <div class="is-online"></div>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>Agung Ardiansyah</b>
+                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="time">12 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <div class="dropdown-item-avatar">
+                    <img alt="image" src="../assets/img/avatar/avatar-4.png" class="rounded-circle">
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>Ardian Rahardiansyah</b>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit ess</p>
+                    <div class="time">16 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <div class="dropdown-item-avatar">
+                    <img alt="image" src="../assets/img/avatar/avatar-5.png" class="rounded-circle">
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>Alfa Zulkarnain</b>
+                    <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                    <div class="time">Yesterday</div>
+                  </div>
+                </a>
+              </div>
+              <div class="dropdown-footer text-center">
+                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
               </div>
             </div>
           </li>
@@ -63,24 +173,60 @@
                   <a href="#">Mark All As Read</a>
                 </div>
               </div>
-              
               <div class="dropdown-list-content dropdown-list-icons">
-            
-                  <a href="#" class="dropdown-item">
-                    <div class="dropdown-item-icon bg-danger text-white">
-                      <i class="fas fa-user-plus"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                     <span style="font-style:italic">Tenant Baru</span>
-                      <div class="time"></div>
-                    </div>
-                  </a>
-                
+                <a href="#" class="dropdown-item dropdown-item-unread">
+                  <div class="dropdown-item-icon bg-primary text-white">
+                    <i class="fas fa-code"></i>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    Template update is available now!
+                    <div class="time text-primary">2 Min Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <div class="dropdown-item-icon bg-info text-white">
+                    <i class="far fa-user"></i>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>You</b> and <b>Dedik Sugiharto</b> are now friends
+                    <div class="time">10 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <div class="dropdown-item-icon bg-success text-white">
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
+                    <div class="time">12 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <div class="dropdown-item-icon bg-danger text-white">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    Low disk space. Let's clean it!
+                    <div class="time">17 Hours Ago</div>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item">
+                  <div class="dropdown-item-icon bg-info text-white">
+                    <i class="fas fa-bell"></i>
+                  </div>
+                  <div class="dropdown-item-desc">
+                    Welcome to Stisla template!
+                    <div class="time">Yesterday</div>
+                  </div>
+                </a>
+              </div>
+              <div class="dropdown-footer text-center">
+                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
               </div>
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            {{-- <img alt="image" src="{{asset('assets/img/avatar/avatar-1.png')}}" class="rounded-circle mr-1"> --}}
+            <img alt="image" src="{{asset('/assets/img/avatar/avatar-1.png')}}" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">Hi, {{Auth::user()->name}}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
@@ -106,36 +252,41 @@
           </li>
         </ul>
       </nav>
-      <div class="main-sidebar">
-        <aside id="sidebar-wrapper">
-          <div class="sidebar-brand">
-            <a href="{{route('home')}}" class="text-black">Layanan</a>
-          </div>
-          <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{route('home')}}" class="text-black">Layanan</a>
-          </div>
-          <ul class="sidebar-menu">
-              <li class="menu-header" style="color:black">Dashboard</li>
-              <li><a class="nav-link" href="{{url('home')}}" style="color:black"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
-              
+
+      <nav class="navbar navbar-secondary navbar-expand-lg">
+        <div class="container">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a href="{{route('home')}}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="fa fa-list"></i><span>Kategori</span></a>
+               <ul class="dropdown-menu">
+                <li class="nav-item"><a href="{{route('produk.index')}}" class="nav-link">Manage Kategori</a></li>
+                <li class="nav-item"><a href="{{route('produk.create')}}" class="nav-link">Tambah Kategori</a></li>
+              </ul>
+            </li>
+                         
+            <li class="nav-item dropdown">
+              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="far fa-clone"></i><span>Produk</span></a>
+               <ul class="dropdown-menu">
+                <li class="nav-item"><a href="{{route('produk.index')}}" class="nav-link">Manage Produk</a></li>
+                <li class="nav-item"><a href="{{route('produk.create')}}" class="nav-link">Tambah Produk</a></li>
+              </ul>
+            </li>
+
               <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown" style="color:black"><i class="fas fa-user-secret"></i> <span>Produk</span></a>
+                <a href="#" data-toggle="dropdown" class="nav-link has-dropdown" ><i class="fas fa-user-secret"></i> <span>Pengaduan</span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="{{route('produk.index')}}" style="color:black">Manage Produk</a></li>
-                  <li><a href="{{route('produk.create')}}" style="color:black">Tambah Produk</a></li>
+                  <li class="nav-item"><a href="{{route('ticket.index')}}"  class="nav-link">Pengaduan</a></li>
                 </ul>
               </li>
 
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown" style="color:black"><i class="fas fa-user-secret"></i> <span>Pengaduan</span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="{{route('ticket.index')}}" style="color:black">Pengaduan</a></li>
-                </ul>
-              </li>
+          </ul>
+        </div>
+      </nav>
 
-            </ul>
-        </aside>
-      </div>
 
       <!-- Main Content -->
       <div class="main-content">
@@ -153,7 +304,6 @@
       </footer>
     </div>
   </div>
-
   <!-- General JS Scripts -->
   <script src="{{asset('assets/js/jquery.min.js')}}"></script>
   <script src="{{asset('assets/js/popper.min.js')}}"></script>
@@ -162,37 +312,13 @@
   <script src="{{asset('assets/js/moment.min.js')}}"></script>
   <script src="{{asset('assets/js/stisla.js')}}"></script>
 
-  <!-- Sweetalert -->
-  <script src="{{asset('assets/sweetalert/sweetalert.min.js')}}"></script>
+  <!-- JS Libraies -->
 
-<!-- ChartJS -->
-<script src="{{asset('assets/highchart/js/highcharts.js')}}"></script>
-<script src="{{asset('assets/highchart/js/modules/exporting.js')}}"></script>
-
- <!--morris JavaScript -->
- <script src="{{asset('assets/raphael/raphael-min.js')}}"></script>
- <script src="{{asset('assets/morrisjs/morris.min.js')}}"></script>
+  <!-- Page Specific JS File -->
 
   <!-- Template JS File -->
   <script src="{{asset('assets/js/scripts.js')}}"></script>
   <script src="{{asset('assets/js/custom.js')}}"></script>
-  <!-- Page Specific JS File -->
-  <script src="{{asset('assets/js/page/bootstrap-modal.js')}}"></script>
-  <script src="{{asset('assets/datatables/jquery.dataTables.min.js')}}"></script>
-  <script type="text/javascript">
-     $(document).on('click','#klik_baca', function () {
-      var id_ticket = $(this).attr('data-id-notif');
-          $.get(' {{Url("baca-notif")}}', {'_token' : $('meta[name=csrf-token]').attr('content'),id_ticket:id_ticket}, function(resp){
-              swal({
-                  html : "Status Akun Berhasil Diubah",
-                  showConfirmButton : true,
-                  type : "success",
-                  timer : 1000
-              });
-              location.reload();
-          });
-      });
-  </script>
-  @yield('scripts')
+  @yield('script')
 </body>
 </html>
