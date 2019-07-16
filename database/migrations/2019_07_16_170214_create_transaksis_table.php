@@ -15,6 +15,9 @@ class CreateTransaksisTable extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('id_user');
+            $table->string('invoice');
+            $table->string('id_barang');
             $table->timestamps();
         });
     }
