@@ -72,7 +72,11 @@
             </li>
 
              <li class="nav-item dropdown">
-              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="fa fa-clone"></i><span>Costumer</span></a>
+              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="fa fa-clone"></i><span>Customer</span></a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a href="{{route('pelanggan.index')}}" class="nav-link">Manage Customer</a></li>
+                <li class="nav-item"><a href="{{route('pelanggan.create')}}" class="nav-link">Tambah Customer</a></li>
+              </ul>
             </li>
 
             <li class="nav-item dropdown">

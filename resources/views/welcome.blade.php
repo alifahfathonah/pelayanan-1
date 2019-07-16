@@ -61,7 +61,7 @@
                     <div class="row" id="refresh">
                         @foreach ($produk as $item)
                         <div class="col-auto mb-3">
-                            <div class="card shadow-lg" style="width:22.8rem;">
+                            <div class="card shadow-lg" style="width:16.6rem;">
                                 <div class="card-body">
                                     <h5 class="card-title">{{$item->nama}}</h5>
                                     <img class="card-img-top" src="{{asset('data_file/'.$item->img)}}" width="200" height="200" alt="Card image cap">
@@ -99,7 +99,7 @@
                                             <label>Password</label>
                                             <input type="password" class="form-control" name="password" placeholder="Masukan Password" required>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-block">MASUK</button>
+                                        <button type="submit" class="btn btn-success btn-block">MASUK</button>
                                         <button type="reset" class="btn btn-warning btn-block">RESET</button>
                                     </form>
                                 </div>

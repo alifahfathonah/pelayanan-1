@@ -32,11 +32,19 @@ Route::get('filter-produk','welcomeController@filter');
 Route::resource('produk','produkController');
 Route::get('/pproduk/delete/{id}', 'produkController@delete')->name('produk.delete');
 
-
+// Master Ticket
 Route::resource('ticket','ticketController');
-Route::resource('customer','customerController');
+
+// Master Customer
+Route::resource('pelanggan','addcustomerController');
 
 //Mater Kategori Produk
 Route::resource('kategori','KategoriController');
 Route::get('/kategori/delete/{id}', 'KategoriController@delete')->name('kategori.delete');
+
+////////// END Admin \\\\\\\\\\\
+
+////////// Customer \\\\\\\\\\\
+
+Route::resource('customer','customerController');
 
