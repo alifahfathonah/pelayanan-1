@@ -120,20 +120,27 @@
     </div>
   </div>
   <!-- General JS Scripts -->
-  <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+  {{-- <script src="{{asset('assets/js/jquery.min.js')}}"></script> --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="{{asset('assets/js/popper.min.js')}}"></script>
-  <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('assets/js/jquery.nicescroll.min.js')}}"></script>
   <script src="{{asset('assets/js/moment.min.js')}}"></script>
   <script src="{{asset('assets/js/stisla.js')}}"></script>
-
-  <!-- JS Libraies -->
+  <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
   <!-- Page Specific JS File -->
 
   <!-- Template JS File -->
   <script src="{{asset('assets/js/scripts.js')}}"></script>
   <script src="{{asset('assets/js/custom.js')}}"></script>
+
+  <!-- ChartJS -->
+<script src="{{asset('assets/highchart/js/highcharts.js')}}"></script>
+<script src="{{asset('assets/highchart/js/modules/exporting.js')}}"></script>
+
+ <!--morris JavaScript -->
+ <script src="{{asset('assets/raphael/raphael-min.js')}}"></script>
+ <script src="{{asset('assets/morrisjs/morris.min.js')}}"></script>
   @yield('script')
 </body>
 </html>

@@ -12,7 +12,7 @@
                 <h4 class="text-dark">Jumlah Customer</h4>
               </div>
               <div class="card-body">
-                12
+                {{$customer}}
               </div>
             </div>
         </div>
@@ -25,10 +25,10 @@
             </div>
             <div class="card-wrap">
                 <div class="card-header">
-                <h4 class="text-dark">Jumlah Provider</h4>
+                <h4 class="text-dark">Ticket Masuk</h4>
                 </div>
                 <div class="card-body">
-                12
+                {{$masuk}}
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 <h4 class="text-dark">Ticket Dalam Proses</h4>
                 </div>
                 <div class="card-body">
-                12
+                {{$proses}}
                 </div>
             </div>
         </div>
@@ -60,17 +60,17 @@
                 <h4 class="text-dark">Ticket Selesai</h4>
                 </div>
                 <div class="card-body">
-                12
+                {{$selesai}}
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-lg-7">
+    <div class="col-lg-6">
         <!-- LINE CHART -->
         <div class="card">
             <div class="card-body">
-            <h4 class="card-title m-b-0 text-dark">Grafik Jumlah Tenant Masuk</h4>
+            <h4 class="card-title m-b-0 text-dark">Grafik Jumlah Customer Masuk</h4>
         </div>
             <div class="card-body">
             <div class="amp-pxl m-t-90" style="height: 390px;" id="linechart"></div>
@@ -80,7 +80,7 @@
         <!-- /.card -->
     </div>
 
-    <div class="col-lg-5">
+    <div class="col-lg-6">
         <!-- Column -->
         <div class="card card-default">
             <div class="card-header">
@@ -89,22 +89,22 @@
                     <a class="btn-minimize" data-action="expand"><i class="mdi mdi-arrow-expand"></i></a>
                     <a class="btn-close" data-action="close"><i class="ti-close"></i></a>
                 </div>
-                <h4 class="card-title m-b-0" style="font-size:25px">Payment Stats</h4>
+                <h4 class="card-title m-b-0" style="font-size:25px">Ticket Stats</h4>
             </div>
             <div class="card-body collapse show">
             <div id="morris-donut-chart" class="ecomm-donute" style="height: 317px;"></div>
                 <ul class="list-inline m-t-20 text-center" >
                     <li >
                         <h6 class="text-dark"><i class="fa fa-circle text-primary "></i> Ticket Masuk</h6>
-                        <h4 class="m-b-0 text-dark">12</h4>
+                        <h4 class="m-b-0 text-dark">{{$masuk}}</h4>
                     </li>
                     <li>
                         <h6 class="text-dark"><i class="fa fa-circle text-success"></i> Ticket Proses</h6>
-                        <h4 class="m-b-0 text-dark">12</h4>
+                        <h4 class="m-b-0 text-dark">{{$proses}}</h4>
                     </li>
                     <li>
                         <h6 class="text-dark"> <i class="fa fa-circle text-danger"></i> Ticket Selesai</h6>
-                        <h4 class="m-b-0 text-dark">12</h4>
+                        <h4 class="m-b-0 text-dark">{{$selesai}}</h4>
                     </li>
                 </ul>
             </div>
@@ -112,7 +112,7 @@
     </div>
 </div>
 @endsection
-@section('scripts')
+@section('script')
 <script type="text/javascript">
 $(function () {
     $('#linechart').highcharts({
@@ -120,21 +120,21 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: 'Grafik Jumlah Tenant Masuk'
+            text: 'Grafik Jumlah Customer Masuk'
         },
         yAxis: {
             title: {
-                text: 'Jumlah Jumlah Tenant Masuk'
+                text: 'Jumlah Jumlah Customer Masuk'
             }
 
         },
         credits: {enabled: false},
         xAxis: {
-            categories: [12],
+            categories: [{{$_tgl}}],
             crosshair: true
         },series: [{
             name: 'Jumlah',
-            data: [12],
+            data: [{{$_nilai}}],
         }]
     });
 });
@@ -147,14 +147,14 @@ $(function () {
         element: 'morris-donut-chart',
         data: [{
             label: "Ticket Masuk",
-            value: [12],
+            value: [{{$masuk}}],
 
         }, {
             label: "Ticket Proses",
-            value: [12],
+            value: [{{$proses}}],
         }, {
             label: "Ticket Selesai",
-            value: [12]
+            value: [{{$selesai}}]
         }],
         resize: true,
         colors:['#6777ef', '#63ed7a', '#ef5350']

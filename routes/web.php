@@ -23,17 +23,20 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/','welcomeController@welcome');
+Route::get('filter-produk','welcomeController@filter');
+
+
 ////////// Admin \\\\\\\\\\\
 
  //master produk
- Route::resource('produk','produkController');
-  Route::get('/pproduk/delete/{id}', 'produkController@delete')->name('produk.delete');
+Route::resource('produk','produkController');
+Route::get('/pproduk/delete/{id}', 'produkController@delete')->name('produk.delete');
 
 
- Route::resource('ticket','ticketController');
- Route::resource('customer','customerController');
+Route::resource('ticket','ticketController');
+Route::resource('customer','customerController');
 
 //Mater Kategori Produk
- Route::resource('kategori','KategoriController');
- Route::get('/kategori/delete/{id}', 'KategoriController@delete')->name('kategori.delete');
+Route::resource('kategori','KategoriController');
+Route::get('/kategori/delete/{id}', 'KategoriController@delete')->name('kategori.delete');
 
