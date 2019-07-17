@@ -38,6 +38,9 @@ Route::resource('ticket','ticketController');
 // Master Customer
 Route::resource('pelanggan','addcustomerController');
 
+// Master Transaksi
+Route::resource('transaksi','transaksiController');
+
 //Mater Kategori Produk
 Route::resource('kategori','KategoriController');
 Route::get('/kategori/delete/{id}', 'KategoriController@delete')->name('kategori.delete');

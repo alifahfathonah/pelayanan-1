@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\transaksi;
+use App\user;
 
 class transaksiController extends Controller
 {
@@ -13,7 +15,8 @@ class transaksiController extends Controller
      */
     public function index()
     {
-        //
+        $transaksi = transaksi::all();
+        return view('Admin.transaksi.index', compact('transaksi'));
     }
 
     /**
@@ -23,7 +26,7 @@ class transaksiController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.transaksi.create');
     }
 
     /**

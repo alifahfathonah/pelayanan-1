@@ -95,12 +95,20 @@
               </ul>
             </li>
 
-              <li class="nav-item dropdown">
-                <a href="#" data-toggle="dropdown" class="nav-link has-dropdown" ><i class="fas fa-user-secret"></i> <span>Pengaduan</span></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a href="{{route('ticket.index')}}"  class="nav-link">Pengaduan</a></li>
-                </ul>
-              </li>
+            <li class="nav-item dropdown">
+              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown" ><i class="fas fa-user-secret"></i> <span>Transaksi</span></a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a href="{{route('transaksi.index')}}"  class="nav-link">Manage Transaksi</a></li>
+                <li class="nav-item"><a href="{{route('transaksi.create')}}"  class="nav-link">Tambah Transaksi</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown" ><i class="fas fa-user-secret"></i> <span>Pengaduan</span></a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a href="{{route('ticket.index')}}"  class="nav-link">Pengaduan</a></li>
+              </ul>
+            </li>
 
           </ul>
         </div>

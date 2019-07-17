@@ -66,21 +66,21 @@
         </div>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
         <!-- LINE CHART -->
         <div class="card">
             <div class="card-body">
             <h4 class="card-title m-b-0 text-dark">Grafik Jumlah Customer Masuk</h4>
         </div>
             <div class="card-body">
-            <div class="amp-pxl m-t-90" style="height: 390px;" id="linechart"></div>
+            <div class="amp-pxl m-t-90" style="height: 390px; width:100%" id="linechart"></div>
             </div>
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-12 col-sm-6 col-12">
         <!-- Column -->
         <div class="card card-default">
             <div class="card-header">
