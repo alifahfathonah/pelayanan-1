@@ -72,7 +72,11 @@
             </li>
 
              <li class="nav-item dropdown">
-              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="fa fa-clone"></i><span>Costumer</span></a>
+              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="fa fa-clone"></i><span>Customer</span></a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a href="{{route('pelanggan.index')}}" class="nav-link">Manage Customer</a></li>
+                <li class="nav-item"><a href="{{route('pelanggan.create')}}" class="nav-link">Tambah Customer</a></li>
+              </ul>
             </li>
 
             <li class="nav-item dropdown">
@@ -91,12 +95,20 @@
               </ul>
             </li>
 
-              <li class="nav-item dropdown">
-                <a href="#" data-toggle="dropdown" class="nav-link has-dropdown" ><i class="fas fa-user-secret"></i> <span>Pengaduan</span></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a href="{{route('ticket.index')}}"  class="nav-link">Pengaduan</a></li>
-                </ul>
-              </li>
+            <li class="nav-item dropdown">
+              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown" ><i class="fas fa-user-secret"></i> <span>Transaksi</span></a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a href="{{route('transaksi.index')}}"  class="nav-link">Manage Transaksi</a></li>
+                <li class="nav-item"><a href="{{route('transaksi.create')}}"  class="nav-link">Tambah Transaksi</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown" ><i class="fas fa-user-secret"></i> <span>Pengaduan</span></a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a href="{{route('ticket.index')}}"  class="nav-link">Pengaduan</a></li>
+              </ul>
+            </li>
 
           </ul>
         </div>
@@ -120,20 +132,27 @@
     </div>
   </div>
   <!-- General JS Scripts -->
-  <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+  {{-- <script src="{{asset('assets/js/jquery.min.js')}}"></script> --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="{{asset('assets/js/popper.min.js')}}"></script>
-  <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('assets/js/jquery.nicescroll.min.js')}}"></script>
   <script src="{{asset('assets/js/moment.min.js')}}"></script>
   <script src="{{asset('assets/js/stisla.js')}}"></script>
-
-  <!-- JS Libraies -->
+  <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
   <!-- Page Specific JS File -->
 
   <!-- Template JS File -->
   <script src="{{asset('assets/js/scripts.js')}}"></script>
   <script src="{{asset('assets/js/custom.js')}}"></script>
+
+  <!-- ChartJS -->
+<script src="{{asset('assets/highchart/js/highcharts.js')}}"></script>
+<script src="{{asset('assets/highchart/js/modules/exporting.js')}}"></script>
+
+ <!--morris JavaScript -->
+ <script src="{{asset('assets/raphael/raphael-min.js')}}"></script>
+ <script src="{{asset('assets/morrisjs/morris.min.js')}}"></script>
   @yield('script')
 </body>
 </html>

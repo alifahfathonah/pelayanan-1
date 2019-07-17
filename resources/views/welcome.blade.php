@@ -11,7 +11,7 @@
 <body>
 
     <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="{{url('/')}}">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,15 +33,38 @@
     <br>
         <div class="container-fluid scrollspy-example" data-spy="scroll" data-offset="0">
             <div class="row text-left" data-spy="scroll" data-offset="0">
+                
                 <div class="col-12 col-md-9 col-lg-9">
-                    <div class="row">
+                    <div class="bg-white text-dark shadow-lg rounded scrollspy-example" data-spy="scroll" data-offset="0">
+                        <div style="height: 38px; margin-top:2px;">
+                            <form>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <select name="kategori" id="kategori" class="form-control form-control-md">
+                                            <option value="">--Kategori--</option>
+                                            <?php 
+                                                $kategori = App\kategori::all();
+                                            ?>
+                                            @foreach ($kategori as $item)
+                                                <option value="{{$item->id_kategori}}">{{$item->nama_kategori}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-2">
+                                        <button class="btn btn-dark btn-md" id="filter">Filter</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row" id="refresh">
                         @foreach ($produk as $item)
                         <div class="col-auto mb-3">
-                            <div class="card shadow-lg" style="width:22.8rem;">
+                            <div class="card shadow-lg" style="width:16.6rem;">
                                 <div class="card-body">
                                     <h5 class="card-title">{{$item->nama}}</h5>
                                     <img class="card-img-top" src="{{asset('data_file/'.$item->img)}}" width="200" height="200" alt="Card image cap">
-                                    {{-- <h6 class="card-subtitle mb-2 text-muted">{{$item->kategori}}</h6> --}}
                                     <div class="card-footer">
                                         <small class="text-muted">{{$item->kategori}}</small>
                                     </div>
@@ -76,7 +99,7 @@
                                             <label>Password</label>
                                             <input type="password" class="form-control" name="password" placeholder="Masukan Password" required>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-block">MASUK</button>
+                                        <button type="submit" class="btn btn-success btn-block">MASUK</button>
                                         <button type="reset" class="btn btn-warning btn-block">RESET</button>
                                     </form>
                                 </div>
@@ -170,11 +193,19 @@
             </div>
         </div>
 
-    {{-- <script src="{{asset('vendor/boostrap/bootstrap.js')}}"></script>
-    <script src="{{asset('vendor/jquery/jquery.js')}}"></script>
-    <script src="{{asset('vendor/boostrap/popper.js')}}"></script> --}}
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="{{asset('assets/js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/popper.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+
+<script type="text/javascript">
+    $("#filter").click(function(){
+        var kategori  = $("#kategori").val();
+        $.get('filter-produk',{'_token': $('meta[name=csrf-token]').attr('content'),kategori:kategori}, function(resp){
+        $("#refresh").html(resp); 
+        });
+    });
+</script>
 </body>
 </html>
