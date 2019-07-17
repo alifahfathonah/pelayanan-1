@@ -138,7 +138,7 @@ class produkController extends Controller
         if (Auth::user()->auth == "Admin") {
             $this->validate($request, [
                 'nama' => 'required',
-                'nama_kategori' => 'required',
+                'kategori' => 'required',
                 'quantity' => 'required',
                 'harga' => 'required',
             ]);
@@ -152,8 +152,7 @@ class produkController extends Controller
             $tujuan_upload = 'data_file';
             $file->move($tujuan_upload,$nama_file);
 
-            if ($request->file('img') != "") {
-                 produk::where('id',$id)->
+            produk::where('id',$id)->
                  update([
                     'nama' => $request->nama,
                     'kategori' => $request->kategori,
@@ -161,15 +160,6 @@ class produkController extends Controller
                     'harga' => $request->harga,
                     'img' => $nama_file,
                 ]);
-            }else{
-                produk::where('id',$id)->
-                 update([
-                    'nama' => $request->nama,
-                    'kategori' => $request->kategori,
-                    'quantity' => $request->quantity,
-                    'harga' => $request->harga
-                ]);
-            }
            
 
             Session::flash("flash_notification", [

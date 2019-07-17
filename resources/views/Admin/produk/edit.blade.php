@@ -16,7 +16,7 @@
             <h4>Form Edit Produk</h4>
             </div>
             <div class="card-body">
-                <form action="{{route('produk.update', $produk->id)}}" method="POST">
+                <form action="{{route('produk.update', $produk->id)}}" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                 @method('PUT')
                     <div class="form-group">
@@ -46,7 +46,7 @@
 
                     <div class="form-group">
                         <label>Gambar</label>
-                        <input type="file" name="img" class="form-control" value="{{$produk->img}}"  autocomplete="off">
+                        <input type="file" name="img" class="form-control" autocomplete="off">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
