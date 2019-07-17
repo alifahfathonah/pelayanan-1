@@ -40,6 +40,7 @@ Route::resource('pelanggan','addcustomerController');
 
 // Master Transaksi
 Route::resource('transaksi','transaksiController');
+Route::get('harga-produk','transaksiController@hargaproduk');
 
 //Mater Kategori Produk
 Route::resource('kategori','KategoriController');

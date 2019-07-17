@@ -48,7 +48,8 @@
                                             @endif
                                         </td>
                                         <td>
-                                           <a href="{{ route('produk.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="nav-icon fa fa-wrench"></i></a> || <a href="{{ route('produk.delete',$item->id)}}" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-trash"></i></a>
+                                           {{-- <a href="{{ route('produk.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="nav-icon fa fa-wrench"></i></a> || <a href="{{ route('produk.delete',$item->id)}}" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-trash"></i></a> --}}
+                                           <a href="" class="btn btn-primary btn-sm">Kirim</a>
 
                                         </td> 
                                     </tr>

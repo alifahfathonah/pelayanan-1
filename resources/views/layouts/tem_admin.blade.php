@@ -132,14 +132,14 @@
     </div>
   </div>
   <!-- General JS Scripts -->
-  {{-- <script src="{{asset('assets/js/jquery.min.js')}}"></script> --}}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="{{asset('assets/js/popper.min.js')}}"></script>
+  {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
+  <script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
   <script src="{{asset('assets/js/jquery.nicescroll.min.js')}}"></script>
+  <script src="{{asset('assets/js/popper.min.js')}}"></script>
+  <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('assets/js/moment.min.js')}}"></script>
   <script src="{{asset('assets/js/stisla.js')}}"></script>
-  <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-
+  
   <!-- Page Specific JS File -->
 
   <!-- Template JS File -->

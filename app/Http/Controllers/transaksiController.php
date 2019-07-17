@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\transaksi;
+use App\produk;
 use App\user;
+use Auth;
 
 class transaksiController extends Controller
 {
@@ -15,7 +17,10 @@ class transaksiController extends Controller
      */
     public function index()
     {
-        $transaksi = transaksi::all();
+        $transaksi = transaksi::selectRaw('transaksis.id,transaksis.id_user,transaksis.invoice,transaksis.id_barang,a.nama,a.harga,b.name as nama_cus')
+        ->leftJoin('produks as a','a.id', '=' ,'transaksis.id_barang')
+        ->leftJoin('users as b' ,'b.id' ,'=' ,'transaksis.id_user')
+        ->get();
         return view('Admin.transaksi.index', compact('transaksi'));
     }
 
@@ -37,7 +42,19 @@ class transaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (Auth::user()->auth == "Admin") {
+            $invoice = transaksi::selectRaw('LPAD(CONVERT(COUNT("id") + 1, char(8)) , 8,"0") as invoice')-> first();
+            $transaksi = new transaksi();
+            $transaksi->id_user = $request->id_user;
+            $transaksi->id_barang = $request->id_barang;
+            $transaksi->invoice = '#'. $invoice->invoice;
+            // dd($transaksi);
+            $transaksi->save();
+
+            return redirect('transaksi');
+        } else {
+            return redirect('home');
+        }
     }
 
     /**
@@ -83,5 +100,30 @@ class transaksiController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // Filter Barang
+    public function hargaproduk(Request $request)
+    {
+        if (Auth::user()->auth == "Admin") {
+            $harga = produk::select('id','harga')
+            ->where('id',$request->id)
+            ->get();
+            $select = '';
+            $select .= '
+                        <div class="form-group">
+                        <label for="id" >Harga Barang</label>
+                        <select id="id" class="form-control" name="id" value="harga">
+                        ';
+                        foreach ($harga as $studi) {
+            $select .= '<option value="'.$studi->id.'">'.$studi->harga.'</option>';
+                        }'
+                        </select>
+                        </div>
+                        </div>';
+            return $select;
+        } else {
+            return redirect('/home');
+        }
     }
 }

@@ -36,8 +36,8 @@
                                     <tr>
                                         <td>{{$no}}</td>
                                         <td>{{$item->invoice}}</td>
-                                        <td>{{$item->barang}}</td>
-                                        <td>{{$item->harga}}</td>
+                                        <td>{{$item->nama}}</td>
+                                        <td>{{Rupiah::getRupiah($item->harga)}}</td>
                                         <td>{{$item->nama_cus}}</td>
                                         <td>
                                            <a href="{{ route('produk.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="nav-icon fa fa-wrench"></i></a> || <a href="{{ route('produk.delete',$item->id)}}" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-trash"></i></a>

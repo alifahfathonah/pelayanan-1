@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{-- Script --}}
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/boostrap/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
     <title>Selamat Datang</title>
 </head>
 <body>
@@ -82,9 +82,9 @@
                                 <li class="nav-item col text-center">
                                     <a class="nav-link active" id="login-tab" data-toggle="pill" href="#login" role="tab" aria-controls="login" aria-selected="true">LOGIN</a>
                                 </li>
-                                <li class="nav-item col text-center">
+                                {{-- <li class="nav-item col text-center">
                                     <a class="nav-link" id="register-tab" data-toggle="pill" href="#register" role="tab" aria-controls="register" aria-selected="false">REGISTER</a>
-                                </li>
+                                </li> --}}
                             </ul>
                             <div class="tab-content" id="pills-tab">
                                 <div class="tab-pane fade show active" id="login" role="tablist" aria-labelledby="login-tab">
