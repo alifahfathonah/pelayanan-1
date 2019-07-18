@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\user;
 use Auth;
+use Carbon\carbon;
 use Session;
 
 class addcustomerController extends Controller
@@ -44,6 +45,8 @@ class addcustomerController extends Controller
         $user->alamat = $request->alamat;
         $user->hp = $request->hp;
         $user->auth = 'Customer';
+        $user->tgl = Carbon::now()->day;
+        $user->status_email = 'Belum Dikirim';
         $user->kelamin = $request->kelamin;
         $user->password = bcrypt('12345678');
         $user->save();

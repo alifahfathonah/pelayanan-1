@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\transaksi;
 use App\produk;
 use App\user;
+use Redirect;
+use Response;
+use DB;
+use App\Mail\kirimEmail;
+use Config;
 use Auth;
 
 class transaksiController extends Controller
@@ -124,6 +130,34 @@ class transaksiController extends Controller
             return $select;
         } else {
             return redirect('/home');
+        }
+    }
+
+    // Kirim Email
+    public function sendmail(Request $request){
+        $comment = $request->pesan;
+        $toEmail = $request->email;
+        Mail::to($toEmail)->send(new kirimEmail($comment));
+        return redirect()->back()->with('message','Successfully Send Your Mail Id.');
+    }
+
+    // Ubah Status Kirim Email
+    public function status(Request $request)
+    {
+        // $status = user::find($request->id);
+        // $status->update([
+        //     'status_email' => 'Dikirim',
+        // ]);
+        // return $status;
+
+        if (Auth::user()->auth == "Admin") {
+            $baca = user::find($request->id);
+            $baca->update([
+                'status_email' => 'Dikirim'
+            ]);
+            return redirect('pelanggan');
+        } else {
+            return redirect('home');
         }
     }
 }

@@ -48,9 +48,16 @@
                                             @endif
                                         </td>
                                         <td>
-                                           {{-- <a href="{{ route('produk.edit', $item->id) }}" class="btn btn-warning btn-sm"><i class="nav-icon fa fa-wrench"></i></a> || <a href="{{ route('produk.delete',$item->id)}}" class="btn btn-danger btn-sm"><i class="nav-icon fa fa-trash"></i></a> --}}
-                                           <a href="" class="btn btn-primary btn-sm">Kirim</a>
-
+                                           @if ($item->status_email == "Belum Dikirim")
+                                            <form action="{{url('send-mail')}}">
+                                                @csrf
+                                                <input type="hidden" name="pesan" value="Halo, {{$item->name}}, Detail Akun Email : {{$item->email}} & Password : 12345678">
+                                                <input type="hidden" name="email" value="{{$item->email}}">
+                                                <button type="submit" class="btn btn-primary btn-sm" id="klik_kirim" data-id-kirim="{{$item->id}}">Kirim</button>
+                                            </form>
+                                            @elseif($item->status_email == "Dikirim")
+                                            <button class="btn btn-warning btn-sm disabled">Sudah Dikirim</button>
+                                           @endif
                                         </td> 
                                     </tr>
                                     <?php $no++; ?>
@@ -62,4 +69,20 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+<script type="text/javascript">
+$(document).on('click','#klik_kirim', function () {
+    var id = $(this).attr('data-id-kirim');
+        $.get(' {{Url("kirim-email")}}', {'_token' : $('meta[name=csrf-token]').attr('content'),id:id}, function(resp){
+            swal({
+                html : "Status Akun Berhasil Diubah",
+                showConfirmButton : true,
+                type : "success",
+                timer : 1000
+            });
+            location.reload();
+        });
+    });
+</script>
 @endsection

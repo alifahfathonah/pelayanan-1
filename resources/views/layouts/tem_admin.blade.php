@@ -139,6 +139,7 @@
   <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('assets/js/moment.min.js')}}"></script>
   <script src="{{asset('assets/js/stisla.js')}}"></script>
+  <script src="{{asset('assets/sweetalert/sweetalert.min.js')}}"></script>
   
   <!-- Page Specific JS File -->
 
