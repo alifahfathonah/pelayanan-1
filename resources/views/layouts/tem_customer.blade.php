@@ -72,10 +72,10 @@
         <div class="container">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a href="{{route('home')}}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+              <a href="{{route('home')}}" class="nav-link"><i class="fas fa-house-damage"></i><span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-              <a href="{{route('customer.index')}}" class="nav-link"><i class="far fa-heart"></i><span>Ticket</span></a>
+              <a href="{{route('customer.index')}}" class="nav-link"><i class="fas fa-ticket-alt"></i><span>Ticket</span></a>
             </li>
           </ul>
         </div>

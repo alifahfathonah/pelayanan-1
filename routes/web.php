@@ -34,6 +34,8 @@ Route::get('/pproduk/delete/{id}', 'produkController@delete')->name('produk.dele
 
 // Master Ticket
 Route::resource('ticket','ticketController');
+Route::get('proses-ticket','ticketController@prosesticket');
+Route::get('selesai-ticket','ticketController@selesaiticket');
 
 // Master Customer
 Route::resource('pelanggan','addcustomerController');
@@ -51,6 +53,5 @@ Route::get('/kategori/delete/{id}', 'KategoriController@delete')->name('kategori
 ////////// END Admin \\\\\\\\\\\
 
 ////////// Customer \\\\\\\\\\\
-
 Route::resource('customer','customerController');
 

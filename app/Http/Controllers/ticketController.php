@@ -17,9 +17,13 @@ class ticketController extends Controller
     public function index()
     {
         if (Auth::user()->auth =="Admin") {
-            $ticket = ticket::selectRaw('tickets.id,tickets.no_produk,tickets.nama_produk,tickets.ticket,tickets.id_user,tickets.status,tickets.pesan,a.nama as nama_produk,b.name as id_user')
-            ->leftJoin('produks as a' , 'a.id' , '=' ,'tickets.id')
+            $ticket = ticket::selectRaw('tickets.id,tickets.no_produk,tickets.ticket,tickets.id_user,tickets.status,tickets.pesan, c.nama as nama_produk,b.name as id_user')
+            ->leftJoin('transaksis as a', function($join){
+                $join->on('a.id' ,'=' ,'tickets.no_produk');
+                $join->on('a.id_barang' ,'=' ,'a.id_barang');
+            })
             ->leftJoin('users as b' , 'b.id' , '=' ,'tickets.id_user')
+            ->leftJoin('produks as c' , 'c.id' , '=' ,'a.id_barang')
             ->get();
             return view('Admin.ticket.index', compact('ticket'));
         }
@@ -89,5 +93,33 @@ class ticketController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // Proses Ticket
+    public function prosesticket(Request $request)
+    {
+        if (Auth::user()->auth == "Admin") {
+            $proses = ticket::find($request->id);
+            $proses->update([
+                'status' => 'Proses',
+            ]);
+            return $proses;
+        } else {
+            return redirect('home');
+        }
+    }
+
+    // Selesai Ticket
+    public function selesaiticket(Request $request)
+    {
+        if (Auth::user()->auth == "Admin") {
+            $selesai = ticket::find($request->id);
+            $selesai->update([
+                'status' => 'Selesai',
+            ]);
+            return $selesai;
+        } else {
+            return redirect('home');
+        }
     }
 }

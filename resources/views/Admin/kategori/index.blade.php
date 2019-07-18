@@ -10,11 +10,11 @@
 </div>
     
     <div class="row">
-        <div class="col-12 col-md-12 col-lg-12">
+        <div class="col-12 col-md-6 col-lg-6">
             <div class="card">
                 <div class="card-header">
                     <h4>Data Kategori Produk</h4>
-                    <a href="{{route('kategori.create')}}" class="btn btn-primary btn-sm">Tambah Kategori Produk</a>
+                    <a href="#tambah" class="btn btn-primary btn-sm">Tambah Kategori Produk</a>
                     </div>
                      @include('layouts._flash')
                     <div class="card-body">
@@ -32,7 +32,7 @@
                                 @foreach ($kategori as $item)
                                     <tr>
                                         <td width="10">{{$no}}</td>
-                                        <td width="400">{{$item->nama_kategori}}</td>
+                                        <td width="300">{{$item->nama_kategori}}</td>
                                         <td>
                                            <a href="{{ route('kategori.edit', $item->id_kategori) }}" class="btn btn-warning btn-sm"><i class="nav-icon fa fa-wrench"></i></a> || 
                     
@@ -45,6 +45,31 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                <h4>Form Tambah Kategori Produk</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{route('kategori.store')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label>Nama Kategori Produk</label>
+                            <input type="text" class="form-control" id="tambah" name="nama_kategori" autocomplete="off" >
+                                @if ($errors->has('hari'))
+                                    <span class="invalid-feedback" role="alert"> 
+                                        <strong>{{ $errors->first('nama_kategori') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+    
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a type="reset" href="{{route('kategori.index')}}" class="btn btn-danger">Batal</a>
+                    </form>
                 </div>
             </div>
         </div>

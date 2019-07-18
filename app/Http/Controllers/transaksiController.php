@@ -144,12 +144,6 @@ class transaksiController extends Controller
     // Ubah Status Kirim Email
     public function status(Request $request)
     {
-        // $status = user::find($request->id);
-        // $status->update([
-        //     'status_email' => 'Dikirim',
-        // ]);
-        // return $status;
-
         if (Auth::user()->auth == "Admin") {
             $baca = user::find($request->id);
             $baca->update([

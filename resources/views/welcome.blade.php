@@ -7,26 +7,47 @@
     {{-- Script --}}
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
     <title>Selamat Datang</title>
+    <style type="text/css">
+    .judul_frontpage{
+                font-size: 15pt;
+                line-height: 24px;
+                margin-top: 1px;
+                color: white;
+                padding-top: 50px;
+                text-shadow: 1px 1px 4px black;
+            }
+    </style>
 </head>
 <body>
 
     <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-dark">
-        <a class="navbar-brand" href="{{url('/')}}">Home</a>
+        <a class="navbar-brand text-white" href="{{url('/')}}">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        {{-- <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link text-white" href="#home">Home</a>
+                <a class="nav-item nav-link text-white" href="#home"></a>
                 <a class="nav-item nav-link text-white" href="#about">About</a>
                 <a class="nav-item nav-link text-white" href="#blog">Blog</a>
             </div>
-        </div>
+        </div> --}}
     </nav>
 
     <div class="container-fluid">
-        <div class="bg-white text-dark shadow-lg rounded scrollspy-example" data-spy="scroll" data-offset="0" style="margin-top:70px">
+        {{-- <div class="bg-white text-dark shadow-lg rounded scrollspy-example" data-spy="scroll" data-offset="0" style="margin-top:70px">
             <div class="row"  style="height: 80px">  
+            </div>
+        </div> --}}
+        <br><br><br>
+        <div class="fixed shadow-lg" style="background-size: cover; background-repeat: no-repeat; background-position: center; background-image: url('/data_file/img.jpg'); height: 150px;">
+            <div style="background-color: rgba(0,0,0,0.5); height: 150px;">
+                <div class="container pt-7">
+                    <div class="fg-white judul_frontpage" style="font-weight:bold">
+                      SILAYON DIKTI <br>
+                      Sistem Layanan Online Pendidikan Tinggi
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -40,19 +61,11 @@
                             <form>
                                 <div class="row">
                                     <div class="col-2">
-                                        <select name="kategori" id="kategori" class="form-control form-control-md">
-                                            <option value="">--Kategori--</option>
-                                            <?php 
-                                                $kategori = App\kategori::all();
-                                            ?>
-                                            @foreach ($kategori as $item)
-                                                <option value="{{$item->id_kategori}}">{{$item->nama_kategori}}</option>
-                                            @endforeach
-                                        </select>
+                                        
                                     </div>
-                                    <div class="col-2">
+                                    {{-- <div class="col-2">
                                         <button class="btn btn-dark btn-md" id="filter">Filter</button>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </form>
                         </div>

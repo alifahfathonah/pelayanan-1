@@ -16,31 +16,24 @@
             <h4>Form Buat Ticket</h4>
             </div>
             <div class="card-body">
-                <form action="{{route('ticket.store')}}" method="POST">
+                <form action="{{route('customer.store')}}" method="POST">
                     @csrf
-                    <div class="form-group">
-                        <label>Nomor Produk</label>
-                        <input type="text" class="form-control" name="no_produk">
-                    </div>
 
                     <div class="form-group">
                         <label>Nama Produk</label>
-                        <select name="nama_produk" class="form-control">
-                            <option value="">Pilih Kategori</option>
+                        <select name="no_produk" class="form-control">
+                            <option value="">Pilih Barang</option>
                             <?php
-                                $produk = App\produk::all();
+                                $produk = App\transaksi::selectRaw('transaksis.id,transaksis.id_user,transaksis.invoice,transaksis.id_barang,a.nama,a.harga,b.name as nama_cus')
+                                            ->leftJoin('produks as a','a.id', '=' ,'transaksis.id_barang')
+                                            ->leftJoin('users as b' ,'b.id' ,'=' ,'transaksis.id_user')
+                                            ->get();
                             ?>
                             @foreach ($produk as $item)
                                 <option value="{{$item->id}}">{{$item->nama}}</option>
                             @endforeach
                         </select>
                     </div>
-
-                    <input type="hidden" name="id_user">
-
-                    <input type="hidden" name="status">
-                    <input type="hidden" name="ticket">
-
                     <div class="form-group">
                         <label>Pesan</label>
                         <textarea class="form-control" name="pesan" cols="30" rows="10" style="height:100px"></textarea>

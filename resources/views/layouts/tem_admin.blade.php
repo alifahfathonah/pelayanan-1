@@ -24,7 +24,7 @@
     <div class="main-wrapper container">
       <div class="navbar-bg"></div>
      <nav class="navbar navbar-expand-lg main-navbar">
-        <a href="index.html" class="navbar-brand sidebar-gone-hide">Stisla</a>
+        <a href="index.html" class="navbar-brand sidebar-gone-hide">LAYANAN</a>
         <div class="navbar-nav">
           <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
         </div>
@@ -68,11 +68,11 @@
         <div class="container">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a href="{{route('home')}}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+              <a href="{{route('home')}}" class="nav-link"><i class="fas fa-house-damage"></i><span>Dashboard</span></a>
             </li>
 
              <li class="nav-item dropdown">
-              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="fa fa-clone"></i><span>Customer</span></a>
+              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="fa fa-people-carry"></i><span>Customer</span></a>
               <ul class="dropdown-menu">
                 <li class="nav-item"><a href="{{route('pelanggan.index')}}" class="nav-link">Manage Customer</a></li>
                 <li class="nav-item"><a href="{{route('pelanggan.create')}}" class="nav-link">Tambah Customer</a></li>
@@ -88,7 +88,7 @@
             </li>
                          
             <li class="nav-item dropdown">
-              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="far fa-clone"></i><span>Produk</span></a>
+              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="fa fa-cart-plus"></i><span>Produk</span></a>
                <ul class="dropdown-menu">
                 <li class="nav-item"><a href="{{route('produk.index')}}" class="nav-link">Manage Produk</a></li>
                 <li class="nav-item"><a href="{{route('produk.create')}}" class="nav-link">Tambah Produk</a></li>
@@ -96,7 +96,7 @@
             </li>
 
             <li class="nav-item dropdown">
-              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown" ><i class="fas fa-user-secret"></i> <span>Transaksi</span></a>
+              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown" ><i class="fas fa-dolly-flatbed"></i> <span>Transaksi</span></a>
               <ul class="dropdown-menu">
                 <li class="nav-item"><a href="{{route('transaksi.index')}}"  class="nav-link">Manage Transaksi</a></li>
                 <li class="nav-item"><a href="{{route('transaksi.create')}}"  class="nav-link">Tambah Transaksi</a></li>
@@ -104,7 +104,7 @@
             </li>
 
             <li class="nav-item dropdown">
-              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown" ><i class="fas fa-user-secret"></i> <span>Pengaduan</span></a>
+              <a href="#" data-toggle="dropdown" class="nav-link has-dropdown" ><i class="fas fas fa-ticket-alt"></i> <span>Pengaduan</span></a>
               <ul class="dropdown-menu">
                 <li class="nav-item"><a href="{{route('ticket.index')}}"  class="nav-link">Pengaduan</a></li>
               </ul>

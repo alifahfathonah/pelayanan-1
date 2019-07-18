@@ -94,10 +94,11 @@ class KategoriController extends Controller
     {
         //
         if (Auth::user()->auth == "Admin") {
+            $kategoris = Kategori::all();
             $kategori = Kategori::select(['id_kategori','nama_kategori'])
             ->where('id_kategori',$id)
             ->first();
-            return view('Admin.kategori.edit')->with(compact('kategori'));
+            return view('Admin.kategori.edit')->with(compact('kategori','kategoris'));
         }else{
            return redirect('home');
         }  

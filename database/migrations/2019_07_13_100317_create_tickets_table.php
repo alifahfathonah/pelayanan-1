@@ -17,7 +17,6 @@ class CreateTicketsTable extends Migration
             $table->bigIncrements('id');
             $table->string('no_produk');
             $table->string('ticket');
-            $table->string('nama_produk');
             $table->string('id_user');
             $table->string('status');
             $table->string('pesan');

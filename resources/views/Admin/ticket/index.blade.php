@@ -22,7 +22,6 @@
                             <tr>
                                 <th>#</th>
                                 <th>TICKET</th>
-                                <th>NO PRODUK</th>
                                 <th>NAMA PRODUK</th>
                                 <th>PENGIRIM</th>
                                 <th>PESAN</th>
@@ -36,11 +35,19 @@
                                 <tr>
                                     <td width="10">{{$no}}</td>
                                     <td width="130"><p style="font-weight:bold">{{$item->ticket}}</p></td>
-                                    <td width="140"><p style="font-weight:bold">{{$item->no_produk}}</p></td>
                                     <td width="400">{{$item->nama_produk}}</td>
                                     <td width="400">{{$item->id_user}}</td>
                                     <td width="400">{{$item->pesan}}</td>
                                     <td width="140"><span class="badge badge-secondary">{{$item->status}}</span></td>
+                                    <td>
+                                        @if ($item->status == "Pengajuan")
+                                            <a href="" class="btn btn-primary btn-sm" id="klik_proses" data-id-proses="{{$item->id}}">Proses</a>
+                                        @elseif($item->status == "Proses")
+                                            <a href="" class="btn btn-info btn-sm" id="klik_selesai" data-id-selesai="{{$item->id}}">Selesai</a>
+                                        @else
+                                            <button class="btn btn-success btn-sm">Ticket Sudah Selesai</button>
+                                        @endif
+                                    </td>
                                 </tr>
                                 <?php $no++; ?>
                                 @endforeach
@@ -51,4 +58,33 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script type="text/javascript">
+$(document).on('click','#klik_proses', function(){
+    var id = $(this).attr('data-id-proses');
+    $.get('{{url("proses-ticket")}}', {'_token' : $('meta[name=csrf-token]').attr('content'),id:id}, function(resp){
+        swal({
+            html : "Status Pengajuan Berhasil Diubah",
+            showConfirmButton : true,
+            type : "success",
+            timer : 1000
+        });
+        location.reload();
+    });
+});
+
+$(document).on('click','#klik_selesai', function(){
+    var id = $(this).attr('data-id-selesai');
+    $.get('{{url("selesai-ticket")}}', {'_token' : $('meta[name=csrf-token]').attr('content'),id:id}, function(resp){
+        swal({
+            html : "Status Proses Berhasil Diubah",
+            showConfirmButton : true,
+            type: "success",
+            timer:1000
+        });
+        location.reload();
+    });
+});
+</script>
 @endsection

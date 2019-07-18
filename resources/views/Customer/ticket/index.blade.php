@@ -23,7 +23,6 @@
                                 <tr>
                                     <th>#</th>
                                     <th>TICKET</th>
-                                    <th>NO PRODUK</th>
                                     <th>NAMA PRODUK</th>
                                     <th>PENGIRIM</th>
                                     <th>PESAN</th>
@@ -37,7 +36,6 @@
                                     <tr>
                                         <td width="10">{{$no}}</td>
                                         <td width="130"><p style="font-weight:bold">{{$item->ticket}}</p></td>
-                                        <td width="140"><p style="font-weight:bold">{{$item->no_produk}}</p></td>
                                         <td width="400">{{$item->nama_produk}}</td>
                                         <td width="400">{{$item->id_user}}</td>
                                         <td width="400">{{$item->pesan}}</td>

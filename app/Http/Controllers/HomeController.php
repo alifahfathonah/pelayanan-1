@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\ticket;
 use DB;
 use App\user;
+use App\produk;
+use App\transaksi;
 use Auth;
 
 class HomeController extends Controller
@@ -66,7 +68,13 @@ class HomeController extends Controller
                 ->with('_tgl',  substr($tgl, 0,-1));
 
             } elseif(Auth::user()->auth ="Customer") {
-               return view('Customer.home');
+
+                $transaksi = transaksi::selectRaw('transaksis.id,transaksis.id_user,transaksis.invoice,transaksis.id_barang,a.nama,a.harga,b.name as nama_cus')
+                ->leftJoin('produks as a','a.id', '=' ,'transaksis.id_barang')
+                ->leftJoin('users as b' ,'b.id' ,'=' ,'transaksis.id_user')
+                ->where('transaksis.id_user',Auth::user()->id)
+                ->get();
+                return view('Customer.home', compact('transaksi'));
             } else {
                 return redirect('home');
             }

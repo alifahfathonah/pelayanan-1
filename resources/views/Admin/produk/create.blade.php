@@ -10,7 +10,7 @@
 </div>
 
 <div class="row">
-    <div class="col-12 col-md-8 col-lg-8">
+    <div class="col-12 col-md-12 col-lg-12">
         <div class="card">
             <div class="card-header">
             <h4>Form Tambah Produk</h4>
