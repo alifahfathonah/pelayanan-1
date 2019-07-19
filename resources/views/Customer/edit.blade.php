@@ -36,33 +36,43 @@
         </div>
         <div class="col-12 col-md-12 col-lg-7">
         <div class="card">
-            <form method="post" class="needs-validation" novalidate="">
-            <div class="card-header">
-                <h4>Profile</h4>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="form-group col-md-12 col-12">
-                        <label>Nama</label>
-                        <input type="text" class="form-control" value="{{$user->name}}" readonly>
-                    </div>
-                    <div class="form-group col-md-12 col-12">
-                        <label>Alamat</label>
-                        <input type="text" class="form-control" value="{{$user->alamat}}" readonly>
-                    </div>
+            <form method="post" class="needs-validation" action="{{url('update-user', $user->id)}}">
+                @csrf
+                @method('PUT')
+                <div class="card-header">
+                    <h4>Profile</h4>
                 </div>
-                <div class="row">
-                    <div class="form-group col-md-7 col-12">
-                        <label>Email</label>
-                        <input type="email" class="form-control" value="{{$user->email}}" readonly>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-md-12 col-12">
+                            <label>Nama</label>
+                            <input type="text" class="form-control" name="name" value="{{$user->name}}" required>
+                        </div>
+                        <div class="form-group col-md-12 col-12">
+                            <label>Alamat</label>
+                            <input type="text" class="form-control" name="alamat" value="{{$user->alamat}}" required>
+                        </div>
                     </div>
-                    <div class="form-group col-md-5 col-12">
-                        <label>Phone</label>
-                        <input type="tel" class="form-control" value="{{$user->hp}}" readonly>
+                    <div class="row">
+                        <div class="form-group col-md-12 col-12">
+                            <label>Email</label>
+                            <input type="email" class="form-control" name="email" value="{{$user->email}}" required>
+                        </div>
+                        
                     </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 col-12">
+                            <label>Phone</label>
+                            <input type="tel" class="form-control" name="hp" value="{{$user->hp}}" required>
+                        </div>
+                        <div class="form-group col-md-6 col-12">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-info btn-sm">Edit</button>
+                    <a href="{{route('home')}}" class="btn btn-danger btn-sm">Cancel</a>
                 </div>
-                <a href="{{url('edit-user', $user->id)}}" class="btn btn-warning btn-sm">Edit</a>
-            </div>
             </form>
         </div>
         </div>

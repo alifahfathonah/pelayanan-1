@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\ticket;
 use App\produk;
 use App\transaksi;
+use App\user;
+
 use Auth;
 
 class customerController extends Controller
@@ -121,6 +124,33 @@ class customerController extends Controller
                 ->where('transaksis.id_user',Auth::user()->id)
                 ->get();
             return view('Customer.transaksi.index', compact('transaksi'));
+        }
+    }
+
+    public function edituser($id)
+    {
+        $user = user::where('id',Auth::user()->id)->first();
+        $edit = user::find($id);
+        $transaksi = transaksi::where('id_user',Auth::user()->id)->count();
+        $ticket = ticket::where('id_user',Auth::user()->id)->count();
+        return view('Customer.edit', compact('user','edit','transaksi','ticket'));
+    }
+
+    public function updateuser(request $request, $id)
+    {
+        if (Auth::user()->auth == "Customer") {
+            $user = user::find($id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->alamat = $request->alamat;
+            $user->hp = $request->hp;
+            $user->password = Hash::make($user['password']);
+            // dd($user);
+            $user->save();
+
+            return redirect('home');
+        } else {
+            return redirect('home');
         }
     }
 }

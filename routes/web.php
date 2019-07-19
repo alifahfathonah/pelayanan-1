@@ -55,4 +55,6 @@ Route::get('/kategori/delete/{id}', 'KategoriController@delete')->name('kategori
 ////////// Customer \\\\\\\\\\\
 Route::resource('customer','customerController');
 Route::get('transaksics','customerController@transaksics');
+Route::get('edit-user/{id}','customerController@edituser');
+Route::put('update-user/{id}','customerController@updateuser');
 
