@@ -11,7 +11,7 @@
     .judul_frontpage{
                 font-size: 15pt;
                 line-height: 24px;
-                margin-top: 1px;
+                margin-top: 30px;
                 color: white;
                 padding-top: 50px;
                 text-shadow: 1px 1px 4px black;
@@ -34,28 +34,21 @@
         </div> --}}
     </nav>
 
-    <div class="container-fluid">
-        {{-- <div class="bg-white text-dark shadow-lg rounded scrollspy-example" data-spy="scroll" data-offset="0" style="margin-top:70px">
-            <div class="row"  style="height: 80px">  
-            </div>
-        </div> --}}
-        <br><br><br>
-        <div class="fixed shadow-lg" style="background-size: cover; background-repeat: no-repeat; background-position: center; background-image: url('/data_file/img.jpg'); height: 150px;">
-            <div style="background-color: rgba(0,0,0,0.5); height: 150px;">
-                <div class="container pt-7">
-                    <div class="fg-white judul_frontpage" style="font-weight:bold">
-                      SILAYON DIKTI <br>
-                      Sistem Layanan Online Pendidikan Tinggi
-                    </div>
+    <div class="fixed shadow-lg" style="background-size: cover; background-repeat: no-repeat; background-position: center; background-image: url('/data_file/img.jpg'); height: 150px;">
+        <div style="background-color: rgba(0,0,0,0.5); height: 150px;">
+            <div class="container pt-7">
+                <div class="fg-white judul_frontpage" style="font-weight:bold">
+                    SILAYON DIKTI <br>
+                    Sistem Layanan Online Pendidikan Tinggi
                 </div>
             </div>
         </div>
     </div>
     <br>
-        <div class="container-fluid scrollspy-example" data-spy="scroll" data-offset="0">
+        <div class="container scrollspy-example" data-spy="scroll" data-offset="0">
             <div class="row text-left" data-spy="scroll" data-offset="0">
                 
-                <div class="col-12 col-md-9 col-lg-9">
+                <div class="col-12 col-md-8 col-lg-8">
                     <div class="bg-white text-dark shadow-lg rounded scrollspy-example" data-spy="scroll" data-offset="0">
                         <div style="height: 38px; margin-top:2px;">
                             <form>
@@ -63,21 +56,18 @@
                                     <div class="col-2">
                                         
                                     </div>
-                                    {{-- <div class="col-2">
-                                        <button class="btn btn-dark btn-md" id="filter">Filter</button>
-                                    </div> --}}
                                 </div>
                             </form>
                         </div>
                     </div>
                     <br>
-                    <div class="row" id="refresh">
+                    <div class="row">
                         @foreach ($produk as $item)
-                        <div class="col-auto mb-3">
-                            <div class="card shadow-lg" style="width:16.6rem;">
+                        <div class="col-auto mb-1 mt-1">
+                            <div class="card shadow-lg" style="width:21.8rem; height:17rem">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{$item->nama}}</h5>
-                                    <img class="card-img-top" src="{{asset('data_file/'.$item->img)}}" width="200" height="200" alt="Card image cap">
+                                    <h6>{{$item->nama}}</h6>
+                                    <img class="card-img-top" src="{{asset('data_file/'.$item->img)}}" height="170" alt="Card image cap">
                                     <div class="card-footer">
                                         <small class="text-muted">{{$item->kategori}}</small>
                                     </div>
@@ -88,17 +78,10 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-md-3 col-lg-3">
+                <div class="col-12 col-md-4 col-lg-4">
                     <div class="card shadow-lg">
+                            <h5 class="card-header shadow-sm mb-3 bg-primary" style="color:white">LOGIN</h5>
                         <div class="card-body">
-                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                <li class="nav-item col text-center">
-                                    <a class="nav-link active" id="login-tab" data-toggle="pill" href="#login" role="tab" aria-controls="login" aria-selected="true">LOGIN</a>
-                                </li>
-                                {{-- <li class="nav-item col text-center">
-                                    <a class="nav-link" id="register-tab" data-toggle="pill" href="#register" role="tab" aria-controls="register" aria-selected="false">REGISTER</a>
-                                </li> --}}
-                            </ul>
                             <div class="tab-content" id="pills-tab">
                                 <div class="tab-pane fade show active" id="login" role="tablist" aria-labelledby="login-tab">
                                     <form class="form-signin" action="{{route('login')}}" method="POST">

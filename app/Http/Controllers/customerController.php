@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ticket;
 use App\produk;
-use App\transaksis;
+use App\transaksi;
 use Auth;
 
 class customerController extends Controller
@@ -110,5 +110,17 @@ class customerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function transaksics()
+    {
+        if (Auth::user()->auth == "Customer") {
+            $transaksi = transaksi::selectRaw('transaksis.id,transaksis.id_user,transaksis.invoice,transaksis.id_barang,a.nama,a.harga,b.name as nama_cus')
+                ->leftJoin('produks as a','a.id', '=' ,'transaksis.id_barang')
+                ->leftJoin('users as b' ,'b.id' ,'=' ,'transaksis.id_user')
+                ->where('transaksis.id_user',Auth::user()->id)
+                ->get();
+            return view('Customer.transaksi.index', compact('transaksi'));
+        }
     }
 }

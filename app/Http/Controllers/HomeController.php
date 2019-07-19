@@ -69,12 +69,10 @@ class HomeController extends Controller
 
             } elseif(Auth::user()->auth ="Customer") {
 
-                $transaksi = transaksi::selectRaw('transaksis.id,transaksis.id_user,transaksis.invoice,transaksis.id_barang,a.nama,a.harga,b.name as nama_cus')
-                ->leftJoin('produks as a','a.id', '=' ,'transaksis.id_barang')
-                ->leftJoin('users as b' ,'b.id' ,'=' ,'transaksis.id_user')
-                ->where('transaksis.id_user',Auth::user()->id)
-                ->get();
-                return view('Customer.home', compact('transaksi'));
+                $user = user::where('id',Auth::user()->id)->first();
+                $transaksi = transaksi::where('id_user',Auth::user()->id)->count();
+                $ticket = ticket::where('id_user',Auth::user()->id)->count();
+                return view('Customer.home', compact('user','transaksi','ticket'));
             } else {
                 return redirect('home');
             }

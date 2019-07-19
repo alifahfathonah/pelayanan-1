@@ -75,6 +75,9 @@
               <a href="{{route('home')}}" class="nav-link"><i class="fas fa-house-damage"></i><span>Dashboard</span></a>
             </li>
             <li class="nav-item">
+              <a href="{{url('transaksics')}}" class="nav-link"><i class="fas fa-dolly-flatbed"></i><span>Transaksi</span></a>
+            </li>
+            <li class="nav-item">
               <a href="{{route('customer.index')}}" class="nav-link"><i class="fas fa-ticket-alt"></i><span>Ticket</span></a>
             </li>
           </ul>
