@@ -65,6 +65,7 @@
                                         @else
                                             <button class="btn btn-success btn-sm">Ticket Sudah Selesai</button>
                                         @endif
+                                        <a href="{{url('view', $item->id)}}" class="btn btn-primary btn-sm">View</a>
                                     </td>
                                 </tr>
                                 <?php $no++; ?>

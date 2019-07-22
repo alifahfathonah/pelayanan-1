@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\produk;
 use App\ticket;
+use PDF;
 use Auth;
 
 class ticketController extends Controller
@@ -131,5 +132,42 @@ class ticketController extends Controller
             'note' => $request->note,
         ]);
         return $isi;
+    }
+
+    // View Ticket
+    public function viewticket(Request $request, $id)
+    {
+        $first = ticket::selectRaw('tickets.id,tickets.no_produk,tickets.ticket,tickets.id_user,tickets.status,tickets.pesan,tickets.note,tickets.foto, c.nama as nama_produk,b.name,b.alamat')
+        ->leftJoin('transaksis as a', function($join){
+            $join->on('a.id' ,'=' ,'tickets.no_produk');
+            $join->on('a.id_barang' ,'=' ,'a.id_barang');
+        })
+        ->leftJoin('users as b' , 'b.id' , '=' ,'tickets.id_user')
+        ->leftJoin('produks as c' , 'c.id' , '=' ,'a.id_barang')
+        ->where('tickets.id', $request->id)
+        ->first();
+
+        return view('Admin.ticket.lk', compact('first'));
+    }
+
+    // Download
+    public function downloadticket(Request $request, $id)
+    {
+        $first = ticket::selectRaw('tickets.id,tickets.no_produk,tickets.ticket,tickets.id_user,tickets.status,tickets.pesan,tickets.note,tickets.foto, c.nama as nama_produk,b.name,b.alamat')
+        ->leftJoin('transaksis as a', function($join){
+            $join->on('a.id' ,'=' ,'tickets.no_produk');
+            $join->on('a.id_barang' ,'=' ,'a.id_barang');
+        })
+        ->leftJoin('users as b' , 'b.id' , '=' ,'tickets.id_user')
+        ->leftJoin('produks as c' , 'c.id' , '=' ,'a.id_barang')
+        ->where('tickets.id', $request->id)
+        ->first();
+
+        // $pdf = PDF::loadView('Admin.ticket.cetak', compact('first'))->setPaper('a4', 'landscape');
+        // return $pdf->stream();
+
+        $pdf = PDF::loadView('Admin.ticket.cetak',['first' => $first]);
+        $pdf->setPaper('A4', 'landscape');
+            return $pdf->download('cetak.pdf');
     }
 }

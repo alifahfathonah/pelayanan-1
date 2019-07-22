@@ -38,6 +38,9 @@ Route::get('proses-ticket','ticketController@prosesticket');
 Route::get('selesai-ticket','ticketController@selesaiticket');
 Route::get('isi/note','ticketController@isinote');
 Route::get('reset-password','addcustomerController@reset');
+Route::get('view/{id}','ticketController@viewticket');
+Route::get('cetak/{id}','ticketController@downloadticket');
+
 
 // Master Customer
 Route::resource('pelanggan','addcustomerController');
