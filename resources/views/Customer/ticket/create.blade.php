@@ -16,7 +16,7 @@
             <h4>Form Buat Ticket</h4>
             </div>
             <div class="card-body">
-                <form action="{{route('customer.store')}}" method="POST">
+                <form action="{{route('customer.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
@@ -24,19 +24,25 @@
                         <select name="no_produk" class="form-control">
                             <option value="">Pilih Barang</option>
                             <?php
-                                $produk = App\transaksi::selectRaw('transaksis.id,transaksis.id_user,transaksis.invoice,transaksis.id_barang,a.nama,a.harga,b.name as nama_cus')
+                                $produk = App\transaksi::selectRaw('transaksis.id,transaksis.id_user,transaksis.invoice,transaksis.id_barang,a.nama as namas,a.harga')
                                             ->leftJoin('produks as a','a.id', '=' ,'transaksis.id_barang')
                                             ->leftJoin('users as b' ,'b.id' ,'=' ,'transaksis.id_user')
+                                            ->where('transaksis.id_user',Auth::user()->id)
                                             ->get();
                             ?>
                             @foreach ($produk as $item)
-                                <option value="{{$item->id}}">{{$item->nama}}</option>
+                                <option value="{{$item->id}}">{{$item->namas}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Pesan</label>
                         <textarea class="form-control" name="pesan" cols="30" rows="10" style="height:100px"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bukti Foto</label>
+                        <input type="file" name="foto" class="form-control">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Tambah</button>

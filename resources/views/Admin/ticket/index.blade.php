@@ -8,7 +8,7 @@
         <div class="breadcrumb-item">Ticket</div>
     </div>
 </div>
-
+{{-- @include('Admin.ticket.modal') --}}
 <div class="row">
     <div class="col-12 col-md-12 col-lg-12">
         <div class="card">
@@ -26,6 +26,8 @@
                                 <th>PENGIRIM</th>
                                 <th>PESAN</th>
                                 <th>STATUS</th>
+                                <th>NOTE</th>
+                                <th>FOTO</th>
                                 <th>ACTION</th>
                             </tr>
                         </thead>
@@ -37,9 +39,25 @@
                                     <td width="130"><p style="font-weight:bold">{{$item->ticket}}</p></td>
                                     <td width="400">{{$item->nama_produk}}</td>
                                     <td width="400">{{$item->id_user}}</td>
-                                    <td width="400">{{$item->pesan}}</td>
-                                    <td width="140"><span class="badge badge-secondary">{{$item->status}}</span></td>
+                                    <td width="300">{{$item->pesan}}</td>
+                                    <td width="200"><span class="badge badge-secondary">{{$item->status}}</span></td>
+                                    <td width="200">
+                                        @if ($item->status == "Pengajuan")
+                                            @if ($item->note == "")
+                                                <button type="button" class="btn btn-warning btn-sm" id="note" data-id-note="{{$item->id}}">Isi Note</button>
+                                            @else
+                                                Sudah Diisi
+                                            @endif
+                                        @elseif($item->status == "Proses")
+                                        <button class="btn btn-warning btn-sm disabled" id="modal-1">Note</button>
+                                        @elseif($item->status == "Selesai")
+                                        <button class="btn btn-warning btn-sm disabled" id="modal-1">Note</button>
+                                        @endif
+                                    </td>
                                     <td>
+                                        <img src="{{asset('data_file/')}}/{{$item->foto}}" style="height:60px;width:60px;">
+                                    </td>
+                                    <td width="400">
                                         @if ($item->status == "Pengajuan")
                                             <a href="" class="btn btn-primary btn-sm" id="klik_proses" data-id-proses="{{$item->id}}">Proses</a>
                                         @elseif($item->status == "Proses")
@@ -86,5 +104,47 @@ $(document).on('click','#klik_selesai', function(){
         location.reload();
     });
 });
+
+$(document).on('click', '#note', function(e) {
+    var id = $(this).attr('data-id-note');
+    swal.fire({
+        input: 'text',
+        inputPlaceholder:'Isi Note Disini ...',
+        }).then(function (text) {
+            if (text.value == "") {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'Note Wajib Diisi !',
+                })
+            } else {
+
+                notedisini(String(text.value),id);
+            }
+        })
+});
+
+function notedisini(note,id){           
+    $.ajax({
+    headers : {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    dataType: 'html',
+    url   : 'isi/note',
+    data  : 'q=isi/note&note=' + note + '&id=' + id,
+    success : function(data){
+        swal.fire({
+            html: 'Berhasil Menambahkan Note Untuk Customer',
+                        showConfirmButton :  false,
+                        type: "success",
+                        timer: 1000
+            });
+        window.location.href = "{{URL::to('/ticket')}}"
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+    swal.fire({
+                html: "Terjadi Kesalahan , Silakan Hubungi IT"
+        });
+    }
+});
+}
 </script>
 @endsection

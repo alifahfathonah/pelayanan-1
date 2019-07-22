@@ -6,7 +6,8 @@
   <title>@yield('title')</title>
 
   <!-- General CSS Files -->
-  <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+  {{-- <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"> --}}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/font.css')}}">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Libraries -->
@@ -139,7 +140,8 @@
   <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('assets/js/moment.min.js')}}"></script>
   <script src="{{asset('assets/js/stisla.js')}}"></script>
-  <script src="{{asset('assets/sweetalert/sweetalert.min.js')}}"></script>
+  {{-- <script src="{{asset('assets/sweetalert/sweetalert.min.js')}}"></script> --}}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   
   <!-- Page Specific JS File -->
 
@@ -154,6 +156,8 @@
  <!--morris JavaScript -->
  <script src="{{asset('assets/raphael/raphael-min.js')}}"></script>
  <script src="{{asset('assets/morrisjs/morris.min.js')}}"></script>
+ {{-- <script src="{{asset('assets/js/page/bootstrap-modal.js')}}"></script> --}}
+
   @yield('script')
 </body>
 </html>

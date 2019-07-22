@@ -29,6 +29,7 @@
                                     <th>ALAMAT</th>
                                     <th>KELAMIN</th>
                                     <th>ACTION</th>
+                                    <th>RESET</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,7 +59,10 @@
                                             @elseif($item->status_email == "Dikirim")
                                             <button class="btn btn-warning btn-sm disabled">Sudah Dikirim</button>
                                            @endif
-                                        </td> 
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-warning btn-sm" id="reset" data-id-reset="{{$item->id}}">Reset</a>
+                                        </td>
                                     </tr>
                                     <?php $no++; ?>
                                     @endforeach
@@ -75,8 +79,8 @@
 $(document).on('click','#klik_kirim', function () {
     var id = $(this).attr('data-id-kirim');
         $.get(' {{Url("kirim-email")}}', {'_token' : $('meta[name=csrf-token]').attr('content'),id:id}, function(resp){
-            swal({
-                html : "Status Akun Berhasil Diubah",
+            swal.fire({
+                html : "Detail Akun Berhasil Dikirim",
                 showConfirmButton : true,
                 type : "success",
                 timer : 1000
@@ -84,5 +88,19 @@ $(document).on('click','#klik_kirim', function () {
             location.reload();
         });
     });
+
+
+$(document).on('click','#reset', function () {
+var id = $(this).attr('data-id-reset');
+    $.get(' {{Url("reset-password")}}', {'_token' : $('meta[name=csrf-token]').attr('content'),id:id}, function(resp){
+        swal.fire({
+            html : "Password Berhasil Direset",
+            showConfirmButton : true,
+            type : "success",
+            timer : 1000
+        });
+        location.reload();
+    });
+});
 </script>
 @endsection

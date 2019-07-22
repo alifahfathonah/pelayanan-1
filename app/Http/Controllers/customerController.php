@@ -21,7 +21,7 @@ class customerController extends Controller
     public function index()
     {
         if (Auth::user()->auth == "Customer") {
-            $ticket = ticket::selectRaw('tickets.id,tickets.no_produk,tickets.ticket,tickets.id_user,tickets.status,tickets.pesan, c.nama as nama_produk,b.name as id_user')
+            $ticket = ticket::selectRaw('tickets.id,tickets.no_produk,tickets.ticket,tickets.id_user,tickets.status,tickets.pesan,tickets.note, c.nama as nama_produk,b.name as id_user')
             ->leftJoin('transaksis as a', function($join){
                 $join->on('a.id' ,'=' ,'tickets.no_produk');
                 $join->on('a.id_barang' ,'=' ,'a.id_barang');
@@ -55,6 +55,15 @@ class customerController extends Controller
     public function store(Request $request)
     {
         if (Auth::user()->auth == "Customer") {
+            // menyimpan data file yang diupload ke variabel $file
+            $file = $request->file('foto');
+    
+            $nama_file = time()."_".$file->getClientOriginalName();
+    
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'data_file';
+            $file->move($tujuan_upload,$nama_file);
+
             $no_ticket = ticket::selectRaw('LPAD(CONVERT(COUNT("id") + 1, char(8)) , 8,"0") as ticket')->first();
             $ticket = new ticket();
             $ticket->no_produk = $request->no_produk;
@@ -62,8 +71,9 @@ class customerController extends Controller
             $ticket->id_user = Auth::user()->id;
             $ticket->status = 'Pengajuan';
             $ticket->pesan = $request->pesan;
+            $ticket->foto = $nama_file;
             $ticket->save();
-
+            // dd($ticket);
             return redirect('customer');
         } else {
             return redirect('home');

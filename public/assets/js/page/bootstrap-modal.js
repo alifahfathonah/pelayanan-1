@@ -1,6 +1,6 @@
 "use strict";
 
-$("#modal-1").fireModal({body: 'Modal body text goes here.'});
+$("#modal-1").fireModal({body: '<textarea name="note" class="form-control" height="100" cols="30" rows="10"></textarea>'});
 $("#modal-2").fireModal({body: 'Modal body text goes here.', center: true});
 
 let modal_3_body = '<p>Object to create a button on the modal.</p><pre class="language-javascript"><code>';
@@ -77,13 +77,10 @@ $("#modal-5").fireModal({
 });
 
 $("#modal-6").fireModal({
-  body: '<p>Now you can see something on the left side of the footer.</p>',
-  created: function(modal) {
-    modal.find('.modal-footer').prepend('<div class="mr-auto"><a href="#">I\'m a hyperlink!</a></div>');
-  },
+  body: '<textarea name="note" class="form-control" style="height:100px;" cols="30" rows="10"></textarea>',
   buttons: [
     {
-      text: 'No Action',
+      text: 'Kirim',
       submit: true,
       class: 'btn btn-primary btn-shadow',
       handler: function(modal) {

@@ -36,6 +36,8 @@ Route::get('/pproduk/delete/{id}', 'produkController@delete')->name('produk.dele
 Route::resource('ticket','ticketController');
 Route::get('proses-ticket','ticketController@prosesticket');
 Route::get('selesai-ticket','ticketController@selesaiticket');
+Route::get('isi/note','ticketController@isinote');
+Route::get('reset-password','addcustomerController@reset');
 
 // Master Customer
 Route::resource('pelanggan','addcustomerController');

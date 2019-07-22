@@ -103,4 +103,13 @@ class addcustomerController extends Controller
     {
         //
     }
+
+    public function reset( Request $request)
+    {
+        $reset = user::find($request->id);
+        $reset->update([
+            'password' => bcrypt('12345678'),
+        ]);
+        return $reset;
+    }
 }

@@ -17,7 +17,7 @@ class ticketController extends Controller
     public function index()
     {
         if (Auth::user()->auth =="Admin") {
-            $ticket = ticket::selectRaw('tickets.id,tickets.no_produk,tickets.ticket,tickets.id_user,tickets.status,tickets.pesan, c.nama as nama_produk,b.name as id_user')
+            $ticket = ticket::selectRaw('tickets.id,tickets.no_produk,tickets.ticket,tickets.id_user,tickets.status,tickets.pesan,tickets.note,tickets.foto, c.nama as nama_produk,b.name as id_user')
             ->leftJoin('transaksis as a', function($join){
                 $join->on('a.id' ,'=' ,'tickets.no_produk');
                 $join->on('a.id_barang' ,'=' ,'a.id_barang');
@@ -121,5 +121,15 @@ class ticketController extends Controller
         } else {
             return redirect('home');
         }
+    }
+
+    // Isi Note
+    public function isinote(Request $request)
+    {
+        $isi = ticket::find($request->id);
+        $isi->update([
+            'note' => $request->note,
+        ]);
+        return $isi;
     }
 }
