@@ -55,7 +55,11 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <img src="{{asset('data_file/')}}/{{$item->foto}}" style="height:60px;width:60px;">
+                                        <div class="thumbnail">
+                                            <a href="{{asset('data_file/')}}/{{$item->foto}}" target="_blank">
+                                            <img src="{{asset('data_file/')}}/{{$item->foto}}" style="height:60px;width:60px;">
+                                            </a>
+                                        </div>
                                     </td>
                                     <td width="400">
                                         @if ($item->status == "Pengajuan")

@@ -19,8 +19,13 @@
                 <form action="{{route('pelanggan.store')}}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label>Nama</label>
+                        <label>Nama Customer</label>
                         <input type="text" class="form-control" name="name" required autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nama Perusahaan</label>
+                        <input type="text" class="form-control" name="pt" required autocomplete="off">
                     </div>
 
                     <div class="form-group">

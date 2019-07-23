@@ -48,6 +48,7 @@ class addcustomerController extends Controller
         $user->tgl = Carbon::now()->day;
         $user->status_email = 'Belum Dikirim';
         $user->kelamin = $request->kelamin;
+        $user->pt = $request->pt;
         $user->password = bcrypt('12345678');
         $user->save();
 
